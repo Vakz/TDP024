@@ -1,7 +1,13 @@
 package se.liu.ida.tdp024.account.data.api.facade;
 
+import java.util.List;
+import se.liu.ida.tdp024.account.data.api.entity.Account;
+
 public interface AccountEntityFacade {
-    public boolean credit(int id, int amount);
     
-    public boolean debit(int id, int amount);
+    public List<Account> find(String name);
+    
+    public Account create(Account.Type type, String name, String bank) throws IllegalArgumentException;
+    
+    
 }

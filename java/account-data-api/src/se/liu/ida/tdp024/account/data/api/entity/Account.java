@@ -6,15 +6,31 @@ public interface Account extends Serializable {
     public void setId(int id);
     public int getId();
     
-    public void setPersonKey(int id);
-    public int getPersonKey();
+    public void setPersonKey(String id);
+    public String getPersonKey();
     
-    public void setAccountType(String type);
-    public String getAccountType();
+    public void setAccountType(Type type);
+    public Type getAccountType();
     
-    public void setBankKey(int id);
-    public int getBankKey();
+    public void setBankKey(String id);
+    public String getBankKey();
     
     public void setHoldings(int id);
     public int getHoldings();
+    
+    public enum Type {
+        CHECK("CHECK"),
+        SAVINGS("SAVINGS");
+        
+        private final String type;
+        
+        private Type(String type)
+        {
+            this.type = type;
+        }
+        
+        public String getType() {
+            return this.type;
+        }
+    };
 }
