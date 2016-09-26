@@ -3,19 +3,19 @@ package se.liu.ida.tdp024.account.data.api.entity;
 import java.io.Serializable;
 
 public interface Account extends Serializable {
-    public void setId(int id);
+    public void setId(int id) throws IllegalArgumentException;
     public int getId();
     
-    public void setPersonKey(String id);
+    public void setPersonKey(String id) throws IllegalArgumentException;
     public String getPersonKey();
     
-    public void setAccountType(Type type);
-    public Type getAccountType();
+    public void setType(Type type);
+    public Type getType();
     
-    public void setBankKey(String id);
+    public void setBankKey(String id) throws IllegalArgumentException;
     public String getBankKey();
     
-    public void setHoldings(int id);
+    public void setHoldings(int id) throws IllegalArgumentException;
     public int getHoldings();
     
     public enum Type {

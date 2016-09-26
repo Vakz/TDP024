@@ -16,8 +16,8 @@ public interface TransactionEntityFacade {
     
     public List<Transaction> transactions(int id);
     
-    public boolean credit(int id, int amount);
+    public Transaction.Status credit(int id, int amount);
     
-    public boolean debit(int id, int amount);
+    public Transaction.Status debit(int id, int amount);
     
 }
