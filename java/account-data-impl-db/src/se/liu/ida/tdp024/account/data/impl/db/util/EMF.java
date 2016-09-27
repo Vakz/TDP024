@@ -24,4 +24,8 @@ public abstract class EMF {
             entityManagerFactory.close();
         }
     }
+
+    public static EntityManager createEntityManager() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

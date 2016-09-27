@@ -1,14 +1,13 @@
 package se.liu.ida.tdp024.account.data.test.entity;
 import se.liu.ida.tdp024.account.data.api.entity.Account;
-import java.util.List;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
+import se.liu.ida.tdp024.account.data.impl.db.entity.AccountDB;
 
 public class AccountTest {
     
     //---- Unit under test ----/
-    Account account;
+    Account account = new AccountDB();
     
     @Test
     public void setValidId() {

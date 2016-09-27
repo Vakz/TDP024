@@ -6,6 +6,11 @@
 package se.liu.ida.tdp024.account.data.impl.db.entity;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.data.api.entity.Transaction;
 
@@ -13,9 +18,11 @@ import se.liu.ida.tdp024.account.data.api.entity.Transaction;
  *
  * @author frejo105
  */
+@Entity
 public class TransactionDB implements Transaction {
     
-    
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     int id;
     
     Type type;
@@ -26,6 +33,7 @@ public class TransactionDB implements Transaction {
     
     Status status; 
     
+    @ManyToOne(targetEntity=AccountDB.class)
     Account account;
 
     @Override
@@ -52,42 +60,44 @@ public class TransactionDB implements Transaction {
 
     @Override
     public void setAmount(int amount) {
-        if ()
+        if (amount <= 0)
+            throw new IllegalArgumentException("Amount must be greater than or equal to 1");
+        this.amount = amount;
     }
 
     @Override
     public int getAmount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.amount;
     }
 
     @Override
     public void setDate(Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.date = date;
     }
 
     @Override
     public Date getDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return date;
     }
 
     @Override
     public void setStatus(Status status) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.status = status;
     }
 
     @Override
     public Status getStatus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.status;
     }
 
     @Override
     public void setAccount(Account account) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.account = account;
     }
 
     @Override
     public Account getAccount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return account;
     }
     
 }
