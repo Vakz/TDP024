@@ -20,6 +20,10 @@ public class AccountDB implements Account {
     private String bankKey;
     
     private int holdings;
+    
+    public AccountDB() {
+        holdings = 0;
+    }
 
     @Override
     public void setId(int id) throws IllegalArgumentException {

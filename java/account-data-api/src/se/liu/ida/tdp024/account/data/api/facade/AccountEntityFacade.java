@@ -7,7 +7,7 @@ public interface AccountEntityFacade {
     
     public List<Account> find(String name);
     
-    public Account create(Account.Type type, String name, String bank) throws IllegalArgumentException;
+    public Account create(Account.Type type, String name, String bank) throws IllegalArgumentException, Exception;
     
     
 }

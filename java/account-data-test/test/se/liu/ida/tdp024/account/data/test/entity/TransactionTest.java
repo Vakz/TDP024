@@ -27,11 +27,6 @@ public class TransactionTest {
         Assert.assertEquals(10, transaction.getId());
     }
     
-    @Test(expected = IllegalArgumentException.class)
-    public void setInvalidId() {
-        transaction.setId(-1);
-    }
-    
     @Test
     public void setTypeCredit() {
         transaction.setType(Transaction.Type.CREDIT);
@@ -48,16 +43,6 @@ public class TransactionTest {
     public void setValidAmount() {
         transaction.setAmount(10);
         Assert.assertEquals(10, transaction.getAmount());
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void setInvalidAmount() {
-        transaction.setAmount(-1);
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void setZeroAmount() {
-        transaction.setAmount(0);
     }
     
     @Test

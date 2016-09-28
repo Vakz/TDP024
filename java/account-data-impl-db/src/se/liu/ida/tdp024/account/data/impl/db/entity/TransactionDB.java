@@ -37,9 +37,7 @@ public class TransactionDB implements Transaction {
     Account account;
 
     @Override
-    public void setId(int id) throws IllegalArgumentException {
-        if (id < 0)
-            throw new IllegalArgumentException("Invalid id");
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -60,8 +58,6 @@ public class TransactionDB implements Transaction {
 
     @Override
     public void setAmount(int amount) {
-        if (amount <= 0)
-            throw new IllegalArgumentException("Amount must be greater than or equal to 1");
         this.amount = amount;
     }
 
