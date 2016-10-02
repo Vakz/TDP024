@@ -23,11 +23,18 @@ app.get("/entries", function(req, res) {
   // Lots of potential parameters
 
   // This is a terrible way to parse dates
-  var date = req.query.date.replace(/[+]/, "T").replace(/(%3A)/g, ":");
-  console.log(date);
-  db.all("SELECT * FROM log WHERE date <= (?) LIMIT 100 ;", {1: date}, function(err, rows) {
-    res.json(rows);
-  });
+  if (req.query.date) {
+    var date = req.query.date.replace(/[+]/, "T").replace(/(%3A)/g, ":");
+    console.log(date);
+    db.all("SELECT * FROM log WHERE date <= (?) LIMIT 100 ;", {1: date}, function(err, rows) {
+      res.json(rows);
+    });
+  } else {
+    db.all("SELECT * FROM log LIMIT 100 ;", function(err, rows) {
+      res.json(rows);
+    });
+  }
+
 });
 
 app.use(express.static('static'));
