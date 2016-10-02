@@ -8,7 +8,7 @@ app.get('/list', function(req, res) {
   var stmt = db.all("SELECT * FROM person;", function(err, rows) {
     res.send(rows);
   });
-})
+});
 
 app.get('/find.name', function(req, res) {
   var name = req.query.name;
@@ -34,8 +34,8 @@ app.get("/find.key", function(req, res) {
   else {
     res.send('null');
   }
-})
+});
 
 db.serialize(function() {
   app.listen(8060);
-})
+});

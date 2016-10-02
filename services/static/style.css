@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif;
+}
+
+#filterTab {
+  height: 30px;
+}
+
+table{
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+thead tr th {
+  border-bottom: 2px solid black;
+  border-collapse:separate;
+}
+
+.entry {
+  padding: 3px;
+}
+
+.level, .tag {
+  min-width: 5%;
+}
+
+.date {
+  min-width: 10%;
+}
+
+.message {
+  min-width: 50%;
+}
+
+label {
+  margin-left: 25px;
+}
