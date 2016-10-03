@@ -14,23 +14,28 @@
   </head>
   <body>
     <form autocomplete="on" method="get" action="" id="filterForm">
-      <label for="date">Date: </label>
+      <label for="dateAgeFilter">Date: </label>
+      <select id="dateAgeFilter" name="dtsort">
+        <option value="OLDER">Older than</option>
+        <option value="NEWER">Newer than</option>
+        <option value="EXACT">Exactly on</option>
+      </select>
       <input type="date" id="dateInput" name="date" />
 
       <label for="tagInput">Tag: </label>
       <input type="text" id="tagInput" name="tag" />
 
-      <label for="levelSortOrd">Level: </label>
-      <select id="levelSortOrd" name="lvlsort">
-        <option value="HI">&gt;=</option>
-        <option value="EX">=</option>
-        <option value="LW">&lt;=</option>
+      <label for="levelFilter">Level: </label>
+      <select id="levelFilter" name="lvlsort">
+        <option value="HIGHER">&gt;=</option>
+        <option value="EXACT">=</option>
+        <option value="LOWER">&lt;=</option>
       </select>
-      <input type="number" name="level" />
+      <input type="number" name="level" id="levelInput" />
       <label for="limit">Limit: </label>
       <input type="number" name="limit" />
 
-      <button type="submit">Filter</button>
+      <button type="submit" id="submitButton">Filter</button>
     </form>
     <table>
       <thead>

@@ -19,21 +19,38 @@ app.get("/log", function(req, res) {
   }
 });
 
+var getDateParam = function(req) {
+  // Present and formatted as expected? Should be formatted as "1990-10-10+10%3A02%3A45"
+  console.log(req.query.date);
+  if (req.query.date && /^\d{4}-\d{2}-\d{2}[+]\d{2}(%3A)\d{2}(%3A)\d{2}/.test(req.query.date)) {
+    return req.query.date.replace(/[+]/, "T").replace(/(%3A)/g, ":");
+  }
+  return "1970-01-01T00:00:00";
+}
+
+var getDateSortParam = function(req) {
+  switch(req.query.dtsort) {
+    case "OLDER":
+      return "<=";
+    case "EXACT":
+      return "="
+    default:
+      return ">=";
+  }
+}
+
 app.get("/entries", function(req, res) {
   // Lots of potential parameters
+  var date = getDateParam(req);
+  var dtsort = getDateSortParam(req);
 
-  // This is a terrible way to parse dates
-  if (req.query.date) {
-    var date = req.query.date.replace(/[+]/, "T").replace(/(%3A)/g, ":");
-    console.log(date);
-    db.all("SELECT * FROM log WHERE date <= (?) LIMIT 100 ;", {1: date}, function(err, rows) {
-      res.json(rows);
-    });
-  } else {
-    db.all("SELECT * FROM log LIMIT 100 ;", function(err, rows) {
-      res.json(rows);
-    });
-  }
+  // This is a terrible way to insert the operator, but should be fine since we use the constants from the parsing function, and not the user input directly
+  var query = "SELECT * FROM log WHERE date dtsort (?) LIMIT 100;";
+  query = query.replace(/dtsort/, dtsort);
+
+  db.all(query, {1: date}, function(err, rows) {
+    res.json(rows);
+  });
 
 });
 

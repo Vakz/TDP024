@@ -11,6 +11,7 @@ $.urlParam = function(name){
 
 function success(json) {
   var tableBody = $("#tableBody");
+  tableBody.empty();
 
   json.forEach(function(entry) {
     var row = $("<tr />", {});
@@ -47,7 +48,7 @@ function success(json) {
   });
 }
 
-function getParameters() {
+function getPrevParameters() {
   var params = {};
   var parameters = ["date", "tag", "limit", "lvlsort", "dtsort"];
   parameters.forEach(function(param) {
@@ -57,7 +58,29 @@ function getParameters() {
   return params;
 }
 
+function getEntries(parameters) {
+  $.getJSON("/entries", parameters, success);
+}
+
+function getFormParameters() {
+  var params = {};
+  params["dtsort"] = $("#dateAgeFilter").val();
+  if (dtsort) {
+
+  }
+
+  params["date"] = $("#dateInput").val();
+  params["level"] = $("#levelInput").val();
+  params["lvlsort"] = $("#lvlsort").val();
+  console.log(params);
+}
+
 $(document).ready(function() {
-  $.getJSON("/entries", getParameters(), success);
+  getEntries(getPrevParameters());
+  $("#filterForm").submit(function(e) {
+    e.preventDefault();
+    getEntries(getFormParameters());
+    return false;
+  });
   $("#dateInput").datetimepicker({format: 'Y-m-d h:m:s', lang: 'sv'});
 });
