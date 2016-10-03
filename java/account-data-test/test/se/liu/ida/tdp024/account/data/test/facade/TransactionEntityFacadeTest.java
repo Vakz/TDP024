@@ -36,8 +36,8 @@ public class TransactionEntityFacadeTest {
     @Before
     public void setup() {
         
-        Account account = accountEntityFacade.create(Account.Type.CHECK, "Fredrik", "Swedbank");
-        id = account.getId();
+//        Account account = accountEntityFacade.create(Account.Type.CHECK, "Fredrik", "Swedbank");
+  //      id = account.getId();
     }
     
     @Test

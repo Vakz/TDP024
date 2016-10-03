@@ -5,3 +5,9 @@
 /java/account-util/build/
 /java/account-data-impl-db/build/
 /java/account-data-impl-db/dist/
+/java/account-data-test/dist/
+/java/account-rest/build/
+/java/account-logic-api/build/
+/java/account-logic-api/dist/
+/java/account-logic-impl/dist/
+/java/account-logic-impl/build/
