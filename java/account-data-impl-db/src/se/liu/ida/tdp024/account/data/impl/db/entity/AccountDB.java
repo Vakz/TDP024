@@ -1,5 +1,6 @@
 package se.liu.ida.tdp024.account.data.impl.db.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +11,7 @@ import se.liu.ida.tdp024.account.data.api.entity.Account;
 public class AccountDB implements Account {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
     private String personKey;

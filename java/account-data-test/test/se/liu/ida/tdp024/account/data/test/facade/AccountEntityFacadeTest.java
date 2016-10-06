@@ -2,7 +2,10 @@ package se.liu.ida.tdp024.account.data.test.facade;
 
 import java.util.List;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.data.api.facade.AccountEntityFacade;
@@ -14,10 +17,10 @@ public class AccountEntityFacadeTest {
     
     //---- Unit under test ----//
     private AccountEntityFacade accountEntityFacade = new AccountEntityFacadeDB();
-    private StorageFacade storageFacade = new StorageFacadeDB();
+    private static StorageFacade storageFacade = new StorageFacadeDB();
     
-    @After
-    public void tearDown() {
+    @AfterClass
+    public static void tearDown() {
         storageFacade.emptyStorage();
     }
     
@@ -27,6 +30,7 @@ public class AccountEntityFacadeTest {
         Assert.assertEquals("7fe7b9a7b3a9168cfbd1a2af2c58aaa6", result.getBankKey());
         Assert.assertEquals("1e8a4f8a29989789cbb6726f14934f2f", result.getPersonKey());
         Assert.assertEquals(Account.Type.CHECK, result.getType());
+        
     }
     
     @Test(expected=IllegalArgumentException.class)
@@ -41,7 +45,7 @@ public class AccountEntityFacadeTest {
     }
     
     @Test
-    public void testFindWithResult() {
+    public void testFindWithResult() throws Exception {
         List<Account> result = accountEntityFacade.find("1e8a4f8a29989789cbb6726f14934f2f");
         Assert.assertEquals("1e8a4f8a29989789cbb6726f14934f2f", result.get(0).getPersonKey());
     }

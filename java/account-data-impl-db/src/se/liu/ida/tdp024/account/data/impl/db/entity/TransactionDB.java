@@ -10,7 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.data.api.entity.Transaction;
 
@@ -22,13 +25,13 @@ import se.liu.ida.tdp024.account.data.api.entity.Transaction;
 public class TransactionDB implements Transaction {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     int id;
     
     Type type;
     
     int amount;
-    
+    @Temporal(DATE)
     Date date;
     
     Status status; 

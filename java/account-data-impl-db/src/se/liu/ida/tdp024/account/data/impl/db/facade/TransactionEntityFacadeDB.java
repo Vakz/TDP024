@@ -25,26 +25,29 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
     @Override
     public List<Transaction> transactions(int id) {
         EntityManager em = EMF.getEntityManager();
-        
-        Query query = em.createQuery("SELECT t FROM TransactionDB t, AccountDB a WHERE t.account = :id AND a.id = :id");
-        query.setParameter("id", id);
+        Account account = em.find(AccountDB.class, id);
+        Query query = em.createQuery("SELECT t FROM TransactionDB t WHERE t.account = :account");
+        query.setParameter("account", account);
         return query.getResultList();
     }
 
     @Override
     public Transaction.Status credit(int id, int amount) {
         EntityManager em = EMF.getEntityManager();
+        
         Transaction.Status success = Transaction.Status.FAILED;
         Account account = em.find(AccountDB.class, id);
         try {
+            if (amount <= 0) throw new IllegalArgumentException("Transaction amount must be positive");
+            em.getTransaction().begin();
             account.setHoldings(account.getHoldings() + amount);
-            em.persist(account);
+            em.merge(account);
             em.getTransaction().commit();
             success = Transaction.Status.OK;
         } catch (IllegalArgumentException e) {
-            // Write to log
+            System.out.println(e.getMessage());
         } catch (Exception e) {
-            System.out.println("Oh no");
+            System.out.println(e.getMessage());
         } finally {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -53,17 +56,19 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         }
         
         try {
+            em.getTransaction().begin();
             Transaction transaction = new TransactionDB();
             transaction.setAmount(amount);
             transaction.setDate(new Date());
             transaction.setStatus(success);
             transaction.setType(Transaction.Type.CREDIT);
+            transaction.setAccount(account);
             em.persist(transaction);
             em.getTransaction().commit();
         } catch (IllegalArgumentException e) {
-            
+            System.out.println(e.getMessage());
         } catch (Exception e) {
-            
+            System.out.println(e.getMessage()); 
         } finally {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -76,16 +81,19 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
     @Override
     public Transaction.Status debit(int id, int amount) {
         EntityManager em = EMF.getEntityManager();
+        em.getTransaction().begin();
         Transaction.Status success = Transaction.Status.FAILED;
         Account account = em.find(AccountDB.class, id);
         try {
+            if (amount <= 0) throw new IllegalArgumentException("Transaction amount must be positive");
+            if (amount > account.getHoldings()) throw new IllegalArgumentException("Can't debit more than current account holdings");
             account.setHoldings(account.getHoldings() - amount);
-            em.persist(account);
+            em.merge(account);
             success = Transaction.Status.OK;
         } catch (IllegalArgumentException e) {
-            // Write to log
+            System.out.println(e.getMessage());
         } catch (Exception e) {
-            // Write to log
+            System.out.println(e.getMessage());
         } finally {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -93,17 +101,20 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         }
         
         try {
+            em.getTransaction().begin();
             Transaction transaction = new TransactionDB();
             transaction.setAmount(amount);
             transaction.setDate(new Date());
             transaction.setStatus(success);
             transaction.setType(Transaction.Type.DEBIT);
+            transaction.setAccount(account);
             em.persist(transaction);
             em.getTransaction().commit();
+            System.out.println("COMMITED");
         } catch (IllegalArgumentException e) {
-            
+            System.out.println(e.getMessage());
         } catch (Exception e) {
-            
+            System.out.println(e.getMessage());
         } finally {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
