@@ -5,6 +5,7 @@ var db = new sqlite3.Database('database.db');
 var app = express();
 
 app.get("/log", function(req, res) {
+	console.log(req.query);
   var tag = req.query.tag;
   var level = req.query.level;
   var message = req.query.message;

@@ -1,28 +1,21 @@
 package se.liu.ida.tdp024.account.util.logger;
 
-/*
- * 
- * This is an extremly simple implemenation of logger,
- * one should really consider writing a new one where
- * you implement a much bettern way of persisting logs.
- * An example would be using REST calls to Monlog.
- * 
- */
+import se.liu.ida.tdp024.account.util.http.HTTPHelper;
+import se.liu.ida.tdp024.account.util.http.HTTPHelperImpl;
+
+
 public class AccountLoggerImpl implements AccountLogger {
 
+    private final String LOGGER_URL = "http://localhost:8090/log";
+    
     @Override
     public void log(Throwable throwable) {
         throwable.printStackTrace();
     }
 
     @Override
-    public void log(TodoLoggerLevel todoLoggerLevel, String shortMessage, String longMessage) {
-        if (todoLoggerLevel == TodoLoggerLevel.CRITICAL || todoLoggerLevel == TodoLoggerLevel.ERROR) {
-            System.err.println(shortMessage);
-            System.err.println(longMessage);
-        } else {
-            System.out.println(shortMessage);
-            System.out.println(longMessage);
-        }
-    }
+    public void log(AccountLoggerLevel accountLoggerLevel, String tag, String message) {
+        HTTPHelper httpHelper = new HTTPHelperImpl();
+        httpHelper.get(LOGGER_URL, "tag", tag, "message", message, "level", Integer.toString(accountLoggerLevel.ordinal()));
+    }    
 }

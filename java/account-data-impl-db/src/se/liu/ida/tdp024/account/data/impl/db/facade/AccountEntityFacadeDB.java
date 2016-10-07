@@ -8,8 +8,20 @@ import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.data.api.facade.AccountEntityFacade;
 import se.liu.ida.tdp024.account.data.impl.db.entity.AccountDB;
 import se.liu.ida.tdp024.account.data.impl.db.util.EMF;
+import se.liu.ida.tdp024.account.util.logger.AccountLogger;
+import se.liu.ida.tdp024.account.util.logger.AccountLogger.AccountLoggerLevel;
 
 public class AccountEntityFacadeDB implements AccountEntityFacade {
+    
+    private final AccountLogger logger;
+    
+    private void log(AccountLoggerLevel level, String message) {
+        logger.log(level, "AccountEntity", message);
+    }
+    
+    public AccountEntityFacadeDB(AccountLogger logger) {
+        this.logger = logger;
+    }
 
     @Override
     public List<Account> find(String personKey) {
@@ -33,6 +45,7 @@ public class AccountEntityFacadeDB implements AccountEntityFacade {
             account.setPersonKey(personKey);
             em.persist(account);
             t.commit();
+            log(AccountLoggerLevel.INFO, "Created new account for personKey " + personKey + " at bankKey " + bankKey);
             return account;
         } catch (IllegalArgumentException e) {
             // Write to log
