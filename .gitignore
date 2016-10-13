@@ -12,3 +12,7 @@
 /java/account-logic-impl/dist/
 /java/account-logic-impl/build/
 *~
+*.pdf
+*.docx
+.gitignore
+sqlite3.exe

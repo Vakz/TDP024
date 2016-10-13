@@ -42,15 +42,12 @@ function success(json) {
 
     row.append(tag);
     row.append(message);
-
-
-    console.log(entry);
   });
 }
 
 function getPrevParameters() {
   var params = {};
-  var parameters = ["date", "tag", "limit", "lvlsort", "dtsort"];
+  var parameters = ["date", "tag", "limit", "dtsort"];
   parameters.forEach(function(param) {
     var p = $.urlParam(param);
     if (p) params[param] = p;
@@ -58,26 +55,42 @@ function getPrevParameters() {
   return params;
 }
 
-function getEntries(parameters) {
+function updateHistory(parameters) {
+  if (Object.keys(parameters).length === 0) return;
+  console.log(parameters);
+  var url = "?";
+  params = [];
+  $.each(parameters, function(k,v) {
+    params.push(k + "=" + v);
+  });
+  url += params.join("&");
+  console.log(url);
+  window.history.pushState(parameters, "Filtering", url);
+}
+
+function getEntries(parameters, ispop) {
   $.getJSON("/entries", parameters, success);
+  if (!ispop) updateHistory(parameters);
 }
 
 function getFormParameters() {
   var params = {};
-  params["dtsort"] = $("#dateAgeFilter").val();
-  if (dtsort) {
-
-  }
-
-  params["date"] = $("#dateInput").val();
-  params["level"] = $("#levelInput").val();
-  params["lvlsort"] = $("#lvlsort").val();
-  console.log(params);
+  params.dtsort = $("#dateAgeFilter").val();
+  params.date = $("#dateInput").val();
+  params.level = $("#levelInput").val();
+  params.lvlsort = $("#lvlsort").val();
+  params.tag = $("#tagInput").val();
+  return params;
 }
 
 $(document).ready(function() {
+  window.onpopstate = function(event) {
+    getEntries(event.state, true);
+  };
+
   getEntries(getPrevParameters());
   $("#filterForm").submit(function(e) {
+    console.log("here");
     e.preventDefault();
     getEntries(getFormParameters());
     return false;
