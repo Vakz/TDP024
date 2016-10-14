@@ -12,3 +12,5 @@
 /java/account-logic-impl/dist/
 /java/account-logic-impl/build/
 *~
+/java/account-logic-test/dist/
+/java/account-logic-test/build/

@@ -16,7 +16,7 @@ public class AccountEntityFacadeDB implements AccountEntityFacade {
     private final AccountLogger logger;
     
     private void log(AccountLoggerLevel level, String message) {
-        logger.log(level, "AccountEntity", message);
+        logger.log(level, "AccountEntityFacade", message);
     }
     
     public AccountEntityFacadeDB(AccountLogger logger) {
@@ -48,11 +48,10 @@ public class AccountEntityFacadeDB implements AccountEntityFacade {
             log(AccountLoggerLevel.INFO, "Created new account for personKey " + personKey + " at bankKey " + bankKey);
             return account;
         } catch (IllegalArgumentException e) {
-            // Write to log
+            log(AccountLoggerLevel.ERROR, e.getMessage());
             throw e;
-            
         } catch (Exception e) {
-            // Write to log
+            log(AccountLoggerLevel.ERROR, e.getMessage());
             throw e;
         } finally {
             if (em.getTransaction().isActive()) {

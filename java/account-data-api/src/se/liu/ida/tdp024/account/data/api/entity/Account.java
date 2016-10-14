@@ -32,5 +32,13 @@ public interface Account extends Serializable {
         public String getType() {
             return this.type;
         }
+        
+        public static Type fromString(String type) {
+            for (Type value : Type.values()) {
+                if (value.getType().equals(type))
+                    return value;
+            }
+            throw new IllegalArgumentException("Type has no corresponding value");
+        }
     };
 }

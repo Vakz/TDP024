@@ -43,6 +43,14 @@ public interface Transaction {
         public String getType() {
             return this.type;
         }
+        
+        public Type fromString(String type) {
+            for (Type value : Type.values()) {
+                if (value.getType().equals(type))
+                    return value;
+            }
+            throw new IllegalArgumentException("Type has no corresponding value");
+        }
     }
     
     public enum Status {
@@ -57,6 +65,14 @@ public interface Transaction {
         
         public String getStatus() {
             return this.status;
+        }
+        
+        public Status fromString(String status) {
+            for (Status value : Status.values()) {
+                if (value.getStatus().equals(status))
+                    return value;
+            }
+            throw new IllegalArgumentException("Status has no corresponding value");
         }
     }
       
