@@ -9,8 +9,8 @@ public interface Account extends Serializable {
     public void setPersonKey(String key) throws IllegalArgumentException;
     public String getPersonKey();
     
-    public void setType(Type type);
-    public Type getType();
+    public void setAccountType(Type type);
+    public Type getAccountType();
     
     public void setBankKey(String key) throws IllegalArgumentException;
     public String getBankKey();

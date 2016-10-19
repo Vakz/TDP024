@@ -48,8 +48,8 @@ public class TransactionTest {
     @Test
     public void setValidDate() {
         Date now = new Date();
-        transaction.setDate(now);
-        Assert.assertEquals(now, transaction.getDate());
+        transaction.setCreated(now);
+        Assert.assertEquals(now, transaction.getCreated());
     }
     
     @Test

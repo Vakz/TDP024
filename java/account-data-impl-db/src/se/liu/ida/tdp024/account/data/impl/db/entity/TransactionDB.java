@@ -23,20 +23,20 @@ import se.liu.ida.tdp024.account.data.api.entity.Transaction;
  */
 @Entity
 public class TransactionDB implements Transaction {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    
+
     Type type;
-    
+
     int amount;
     @Temporal(DATE)
-    Date date;
-    
-    Status status; 
-    
-    @ManyToOne(targetEntity=AccountDB.class)
+    Date created;
+
+    Status status;
+
+    @ManyToOne(targetEntity = AccountDB.class)
     Account account;
 
     @Override
@@ -70,13 +70,13 @@ public class TransactionDB implements Transaction {
     }
 
     @Override
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreated(Date date) {
+        this.created = date;
     }
 
     @Override
-    public Date getDate() {
-        return date;
+    public Date getCreated() {
+        return created;
     }
 
     @Override
@@ -98,5 +98,5 @@ public class TransactionDB implements Transaction {
     public Account getAccount() {
         return account;
     }
-    
+
 }

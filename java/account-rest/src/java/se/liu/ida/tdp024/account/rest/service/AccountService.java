@@ -32,10 +32,11 @@ public class AccountService {
         try {
             String res = accountLogicFacade.create(accounttype, bank, name);
             log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL ACCOUNT CREATION: accounttype: " + accounttype + ", bank: " + bank + ", person: " + name);
-            return Response.ok(res).build();
+            System.out.println(res);
+            return Response.ok().entity(res).build();
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            return Response.status(Response.Status.OK).entity("FAILED").build();
         } catch (Exception e) {
             log(AccountLoggerLevel.EMERGENCY, "UNKNOWN CREATE ERROR: " + e.getMessage());
             return Response.serverError().build();
@@ -52,7 +53,7 @@ public class AccountService {
             return Response.ok(res).build();
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            return Response.status(Response.Status.OK).entity("FAILED").build();
         } catch (Exception e) {
             log(AccountLoggerLevel.EMERGENCY, "UNKNOWN CREDIT ERROR: " + e.getMessage());
             return Response.serverError().build();
@@ -65,11 +66,11 @@ public class AccountService {
         try {
             String res = transactionLogicFacade.debit(id, amount);
             log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL DEBIT: account: " + id + ", amount: " + amount);
-            if (res.equals("FAILED")) throw new IllegalArgumentException("Invalid amount");
+            //if (res.equals("FAILED")) throw new IllegalArgumentException("Invalid amount");
             return Response.ok(res).build();
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            return Response.status(Response.Status.OK).entity("FAILED").build();
         } catch (Exception e) {
             log(AccountLoggerLevel.EMERGENCY, "UNKNOWN DEBIT ERROR: " + e.getMessage());
             return Response.serverError().build();
@@ -96,7 +97,7 @@ public class AccountService {
             return Response.ok(res).build();
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            return Response.status(Response.Status.OK).entity(e.getMessage()).build();
         } catch (Exception e) {
             log(AccountLoggerLevel.EMERGENCY, "UNKNOWN FIND ERROR: " + e.getMessage());
             return Response.serverError().build();

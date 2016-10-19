@@ -22,7 +22,7 @@ public class TransactionLogicFacadeTest {
     public void findTransaction() {
         String transactions = transactionLogicFacade.transaction(1);
        
-        Assert.assertEquals("[{\"id\":1,\"type\":\"CREDIT\",\"amount\":5,\"date\":\"2016-10-19 11:15:36\",\"status\":\"OK\",\"account\":{\"id\":1,\"personKey\":\"personkey\",\"type\":\"CHECK\",\"bankKey\":\"bankkey\",\"holdings\":10}}]", transactions);
+        Assert.assertEquals("[{\"id\":1,\"type\":\"CREDIT\",\"amount\":5,\"created\":\"2016-10-19 11:15:36\",\"status\":\"OK\",\"account\":{\"id\":1,\"personKey\":\"personkey\",\"accountType\":\"CHECK\",\"bankKey\":\"bankkey\",\"holdings\":10}}]", transactions);
     }
     
     @Test

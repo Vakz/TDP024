@@ -39,7 +39,7 @@ public class AccountEntityFacadeDB implements AccountEntityFacade {
         t.begin();
         
         Account account = new AccountDB();
-        account.setType(type);
+        account.setAccountType(type);
         try {
             account.setBankKey(bankKey);
             account.setPersonKey(personKey);

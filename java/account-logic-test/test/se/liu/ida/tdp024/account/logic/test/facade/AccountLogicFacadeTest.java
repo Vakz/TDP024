@@ -18,20 +18,23 @@ public class AccountLogicFacadeTest {
     
     @Test
     public void testFind() {
-        String expected = "[{\"id\":1,\"personKey\":\"personkey\",\"type\":\"CHECK\",\"bankKey\":\"bankkey\",\"holdings\":2}]";
+        String expected = "[{\"id\":1,\"personKey\":\"personkey\",\"accountType\":\"CHECK\",\"bankKey\":\"bankkey\",\"holdings\":2}]";
         
         String res = accountLogicFacade.find("Emelie");
         Assert.assertEquals(expected, res);
     }
     
-    @Test(expected=IllegalArgumentException.class)
+    @Test
     public void testInvalidWhitespaceFind() {
-        accountLogicFacade.find("      ");
+        String result = accountLogicFacade.find("      ");
+        Assert.assertEquals("[]", result);
+        
     }
     
-    @Test(expected=IllegalArgumentException.class)
+    @Test
     public void testInvalidNullFind() {
-        accountLogicFacade.find(null);
+        String result = accountLogicFacade.find(null);
+        Assert.assertEquals("[]", result);
     }
     
     @Test
@@ -51,28 +54,32 @@ public class AccountLogicFacadeTest {
         String res = accountLogicFacade.create("NOEXIST", "Emelie", "Swedbank");
     }
     
-    @Test(expected=IllegalArgumentException.class)
+    @Test
     public void testInvalidWhitespacePersonCreate() throws Exception {
-        accountLogicFacade.create("CHECK", "    ", "Swedbank");
+        String res = accountLogicFacade.create("CHECK", "    ", "Swedbank");
+        Assert.assertEquals("FAILED", res);
     }
     
-    @Test(expected=IllegalArgumentException.class)
+    @Test
     public void testInvalidWhitespaceBankCreate() throws Exception  {
-        accountLogicFacade.create("CHECK", "Emelie", "    ");
+        String res = accountLogicFacade.create("CHECK", "Emelie", "    ");
+        Assert.assertEquals("FAILED", res);
     }
     
-    @Test(expected=IllegalArgumentException.class)
+    @Test
     public void testInvalidNullPersonCreate() throws Exception  {
-        accountLogicFacade.create("CHECK", null, "Swedbank");
+        String res = accountLogicFacade.create("CHECK", null, "Swedbank");
+        Assert.assertEquals("FAILED", res);
     }
     
-    @Test(expected=IllegalArgumentException.class)
+    @Test
     public void testInvalidNullBankCreate() throws Exception  {
-        accountLogicFacade.create("CHECK", "Emelie", null);
+        String res = accountLogicFacade.create("CHECK", "Emelie", null);
+        Assert.assertEquals("FAILED", res);
     }
 
+    @Test(expected=IllegalArgumentException.class)
     public void testInvalidType() throws Exception  {
         String res = accountLogicFacade.create("NOEXIST", "Emelie", "Swedbank");
-        Assert.assertEquals("FAILED", res);
     }
 }

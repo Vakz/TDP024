@@ -37,8 +37,8 @@ public class AccountLogicFacadeImpl implements AccountLogicFacade {
         try {
             person = getPerson(name);
         } catch (IllegalArgumentException e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage());
-            throw e;
+            log(AccountLoggerLevel.WARNING, e.getMessage());
+            return "[]";
         }
         
         AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
@@ -54,13 +54,13 @@ public class AccountLogicFacadeImpl implements AccountLogicFacade {
             persondto = getPerson(name);
             bankdto = getBank(bank);
         } catch (IllegalArgumentException e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage());
-            throw e;
+            log(AccountLoggerLevel.WARNING, e.getMessage());
+            return "FAILED";
         }
         
         try {
            accountEntityFacade.create(Account.Type.fromString(type), persondto.getKey(), bankdto.getKey());
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, "CREATE: bank: " + bank + ", person: " + name + ", error: " + e.getMessage());
             throw e;
         }

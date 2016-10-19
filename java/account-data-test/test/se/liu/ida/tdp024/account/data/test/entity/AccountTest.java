@@ -38,8 +38,8 @@ public class AccountTest {
     
     @Test
     public void setTypeCheck() {
-        account.setType(Account.Type.CHECK);
-        Assert.assertEquals(Account.Type.CHECK, account.getType());
+        account.setAccountType(Account.Type.CHECK);
+        Assert.assertEquals(Account.Type.CHECK, account.getAccountType());
     }
     
     @Test

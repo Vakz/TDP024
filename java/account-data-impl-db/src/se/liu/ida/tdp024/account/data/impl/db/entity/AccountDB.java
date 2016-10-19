@@ -16,7 +16,7 @@ public class AccountDB implements Account {
     
     private String personKey;
     
-    private Type type;
+    private Type accountType;
     
     private String bankKey;
     
@@ -51,13 +51,13 @@ public class AccountDB implements Account {
     }
 
     @Override
-    public void setType(Type type) {
-        this.type = type;
+    public void setAccountType(Type accountType) {
+        this.accountType = accountType;
     }
 
     @Override
-    public Type getType() {
-        return type;
+    public Type getAccountType() {
+        return accountType;
     }
 
     @Override

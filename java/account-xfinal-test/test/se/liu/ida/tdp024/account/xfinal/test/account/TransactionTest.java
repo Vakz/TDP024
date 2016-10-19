@@ -39,12 +39,18 @@ public class TransactionTest {
         AccountDTO accountDTO = accountDTos[0];
 
 
-        httpHelper.get(FinalConstants.ENDPOINT + "account/credit", "id", accountDTO.getId() + "", "amount", 200 + "");
-        httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 50 + "");
-        httpHelper.get(FinalConstants.ENDPOINT + "account/credit", "id", accountDTO.getId() + "", "amount", 25 + "");
-        httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 100 + "");
-        httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 75 + "");
-        httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 10 + "");
+        String res = httpHelper.get(FinalConstants.ENDPOINT + "account/credit", "id", accountDTO.getId() + "", "amount", 200 + "");
+        System.out.println("RESULT IS: " + res);
+        res = httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 50 + "");
+        System.out.println("RESULT IS: " + res);
+        res = httpHelper.get(FinalConstants.ENDPOINT + "account/credit", "id", accountDTO.getId() + "", "amount", 25 + "");
+        System.out.println("RESULT IS: " + res);
+        res = httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 100 + "");
+        System.out.println("RESULT IS: " + res);
+        res = httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 75 + "");
+        System.out.println("RESULT IS: " + res);
+        res = httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 10 + "");
+        System.out.println("RESULT IS: " + res);
 
 
         String transactionJson = httpHelper.get(FinalConstants.ENDPOINT + "account/transactions", "id", accountDTO.getId() + "");

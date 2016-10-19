@@ -24,7 +24,7 @@ public class AccountEntityFacadeMock implements AccountEntityFacade {
         account.setPersonKey(personKey);
         account.setHoldings(2);
         account.setId(1);
-        account.setType(Account.Type.CHECK);
+        account.setAccountType(Account.Type.CHECK);
         
         List<Account> l = new ArrayList<Account>();
         l.add(account);
@@ -38,7 +38,7 @@ public class AccountEntityFacadeMock implements AccountEntityFacade {
         account.setPersonKey(personKey);
         account.setHoldings(2);
         account.setId(1);
-        account.setType(type);
+        account.setAccountType(type);
         return account;
     }
     

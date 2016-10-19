@@ -71,7 +71,7 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
             em.getTransaction().begin();
             Transaction transaction = new TransactionDB();
             transaction.setAmount(amount);
-            transaction.setDate(new Date());
+            transaction.setCreated(new Date());
             transaction.setStatus(success);
             transaction.setType(Transaction.Type.CREDIT);
             transaction.setAccount(account);
@@ -117,7 +117,7 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
             em.getTransaction().begin();
             Transaction transaction = new TransactionDB();
             transaction.setAmount(amount);
-            transaction.setDate(new Date());
+            transaction.setCreated(new Date());
             transaction.setStatus(success);
             transaction.setType(Transaction.Type.DEBIT);
             transaction.setAccount(account);

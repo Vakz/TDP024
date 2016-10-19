@@ -39,7 +39,7 @@ public class TransactionEntityFacadeMock implements TransactionEntityFacade {
         a.setHoldings(10);
         a.setPersonKey("personkey");
         a.setBankKey("bankkey");
-        a.setType(Account.Type.CHECK);
+        a.setAccountType(Account.Type.CHECK);
         t.setAccount(a);
         t.setId(1);
         t.setAmount(5);
@@ -52,7 +52,7 @@ public class TransactionEntityFacadeMock implements TransactionEntityFacade {
         d.setDate(19);
         d.setMinutes(15);
         d.setSeconds(36);
-        t.setDate(d);
+        t.setCreated(d);
         ArrayList<Transaction> tl = new ArrayList<Transaction>();
         tl.add(t);
         return tl;

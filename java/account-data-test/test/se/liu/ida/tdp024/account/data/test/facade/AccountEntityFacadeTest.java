@@ -27,7 +27,7 @@ public class AccountEntityFacadeTest {
         Account result = accountEntityFacade.create(Account.Type.CHECK, "1e8a4f8a29989789cbb6726f14934f2f", "7fe7b9a7b3a9168cfbd1a2af2c58aaa6");
         Assert.assertEquals("7fe7b9a7b3a9168cfbd1a2af2c58aaa6", result.getBankKey());
         Assert.assertEquals("1e8a4f8a29989789cbb6726f14934f2f", result.getPersonKey());
-        Assert.assertEquals(Account.Type.CHECK, result.getType());
+        Assert.assertEquals(Account.Type.CHECK, result.getAccountType());
         
     }
     
