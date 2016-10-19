@@ -46,7 +46,7 @@ app.get("/entries", function(req, res) {
   var dtsort = getDateSortParam(req);
 
   // This is a terrible way to insert the operator, but should be fine since we use the constants from the parsing function, and not the user input directly
-  var query = "SELECT * FROM log WHERE date dtsort (?) LIMIT 100;";
+  var query = "SELECT * FROM log WHERE date dtsort (?) ORDER BY id DESC LIMIT 100;";
   query = query.replace(/dtsort/, dtsort);
 
   db.all(query, {1: date}, function(err, rows) {

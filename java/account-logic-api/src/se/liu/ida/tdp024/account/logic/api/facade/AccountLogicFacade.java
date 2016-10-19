@@ -5,7 +5,7 @@ public interface AccountLogicFacade {
     
     public String find(String name);
     
-    public String create(String type, String bank, String name);
+    public String create(String type, String bank, String name) throws Exception;
     
     
 }

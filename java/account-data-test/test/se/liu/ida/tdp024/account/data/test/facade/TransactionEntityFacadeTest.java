@@ -20,6 +20,7 @@ import se.liu.ida.tdp024.account.data.api.util.StorageFacade;
 import se.liu.ida.tdp024.account.data.impl.db.facade.AccountEntityFacadeDB;
 import se.liu.ida.tdp024.account.data.impl.db.facade.TransactionEntityFacadeDB;
 import se.liu.ida.tdp024.account.data.impl.db.util.StorageFacadeDB;
+import se.liu.ida.tdp024.account.util.logger.AccountLogger;
 import se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl;
 
 /**
@@ -29,7 +30,7 @@ import se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl;
 public class TransactionEntityFacadeTest {
     
     //---- Unit under test ----//
-    private static TransactionEntityFacade transactionEntityFacade = new TransactionEntityFacadeDB();
+    private static TransactionEntityFacade transactionEntityFacade = new TransactionEntityFacadeDB(new AccountLoggerImpl());
     private static AccountEntityFacade accountEntityFacade = new AccountEntityFacadeDB(new AccountLoggerImpl());
     private static StorageFacade storageFacade = new StorageFacadeDB();
     

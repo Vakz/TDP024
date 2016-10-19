@@ -51,7 +51,7 @@ public class AccountEntityFacadeDB implements AccountEntityFacade {
             log(AccountLoggerLevel.ERROR, e.getMessage());
             throw e;
         } catch (Exception e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage());
+            log(AccountLoggerLevel.EMERGENCY, e.getMessage());
             throw e;
         } finally {
             if (em.getTransaction().isActive()) {
