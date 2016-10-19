@@ -13,6 +13,7 @@ import se.liu.ida.tdp024.account.util.http.HTTPHelper;
 import se.liu.ida.tdp024.account.util.json.AccountJsonSerializer;
 import se.liu.ida.tdp024.account.util.json.AccountJsonSerializerImpl;
 import se.liu.ida.tdp024.account.util.logger.AccountLogger;
+import se.liu.ida.tdp024.account.util.logger.AccountLogger.AccountLoggerLevel;
 
 /**
  *
@@ -22,6 +23,10 @@ public class TransactionLogicFacadeImpl implements TransactionLogicFacade {
     
     TransactionEntityFacade transactionEntityFacade;
     AccountLogger logger;
+    
+    private void log(AccountLogger.AccountLoggerLevel level, String message) {
+        logger.log(level, "TransactionLogicFacade", message);
+    }
 
     public TransactionLogicFacadeImpl(TransactionEntityFacade transactionEntityFacade, AccountLogger logger) {
         this.transactionEntityFacade = transactionEntityFacade;
@@ -31,6 +36,7 @@ public class TransactionLogicFacadeImpl implements TransactionLogicFacade {
     @Override
     public String transaction(int id) {
         List<Transaction> transactions = transactionEntityFacade.transactions(id);
+        log(AccountLoggerLevel.INFO, "FOUND TRANSACTIONS, total " + transactions.size() + " results");
         AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
         return serializer.toJson(transactions);
     }

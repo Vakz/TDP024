@@ -45,9 +45,10 @@ public class AccountService {
     @GET
     @Path("credit")
     public Response credit(@QueryParam("id") int id, @QueryParam("amount") int amount) {
-                try {
+        try {
             String res = transactionLogicFacade.credit(id, amount);
             log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL CREDIT: account: " + id + ", amount: " + amount);
+            if (res.equals("FAILED")) throw new IllegalArgumentException("Invalid amount");
             return Response.ok(res).build();
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
@@ -64,6 +65,7 @@ public class AccountService {
         try {
             String res = transactionLogicFacade.debit(id, amount);
             log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL DEBIT: account: " + id + ", amount: " + amount);
+            if (res.equals("FAILED")) throw new IllegalArgumentException("Invalid amount");
             return Response.ok(res).build();
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
@@ -74,5 +76,30 @@ public class AccountService {
         } 
     }
     
+    @GET
+    @Path("transactions")
+    public Response transactions(@QueryParam("id") int id) {
+        try {
+            String res = transactionLogicFacade.transaction(id);
+            return Response.ok(res).build();
+        } catch (Exception e) {
+            log(AccountLoggerLevel.EMERGENCY, "UNKNOWN TRANSACTION ERROR: " + e.getMessage());
+            return Response.serverError().build();
+        }
+    }
     
+    @GET
+    @Path("find/name")
+    public Response findAccounts(@QueryParam("name") String name) {
+        try {
+            String res = accountLogicFacade.find(name);
+            return Response.ok(res).build();
+        } catch (IllegalArgumentException e) {
+            log(AccountLoggerLevel.ERROR, e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        } catch (Exception e) {
+            log(AccountLoggerLevel.EMERGENCY, "UNKNOWN FIND ERROR: " + e.getMessage());
+            return Response.serverError().build();
+        }
+    }
 }

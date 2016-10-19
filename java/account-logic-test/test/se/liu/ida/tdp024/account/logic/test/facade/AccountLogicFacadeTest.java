@@ -35,44 +35,43 @@ public class AccountLogicFacadeTest {
     }
     
     @Test
-    public void testCreateCheck() {
+    public void testCreateCheck() throws Exception  {
         String res = accountLogicFacade.create("CHECK", "Emelie", "Swedbank");
         Assert.assertEquals("OK", res);
     }
     
     @Test
-    public void testCreateSavings() {
+    public void testCreateSavings() throws Exception  {
         String res = accountLogicFacade.create("SAVINGS", "Emelie", "Swedbank");
         Assert.assertEquals("OK", res);
     }
     
-    @Test
-    public void testCreateInvalidType() {
+    @Test(expected=IllegalArgumentException.class)
+    public void testCreateInvalidType() throws Exception  {
         String res = accountLogicFacade.create("NOEXIST", "Emelie", "Swedbank");
-        Assert.assertEquals("FAILED", res);
     }
     
     @Test(expected=IllegalArgumentException.class)
-    public void testInvalidWhitespacePersonCreate() {
+    public void testInvalidWhitespacePersonCreate() throws Exception {
         accountLogicFacade.create("CHECK", "    ", "Swedbank");
     }
     
     @Test(expected=IllegalArgumentException.class)
-    public void testInvalidWhitespaceBankCreate() {
+    public void testInvalidWhitespaceBankCreate() throws Exception  {
         accountLogicFacade.create("CHECK", "Emelie", "    ");
     }
     
     @Test(expected=IllegalArgumentException.class)
-    public void testInvalidNullPersonCreate() {
+    public void testInvalidNullPersonCreate() throws Exception  {
         accountLogicFacade.create("CHECK", null, "Swedbank");
     }
     
     @Test(expected=IllegalArgumentException.class)
-    public void testInvalidNullBankCreate() {
+    public void testInvalidNullBankCreate() throws Exception  {
         accountLogicFacade.create("CHECK", "Emelie", null);
     }
 
-    public void testInvalidType() {
+    public void testInvalidType() throws Exception  {
         String res = accountLogicFacade.create("NOEXIST", "Emelie", "Swedbank");
         Assert.assertEquals("FAILED", res);
     }

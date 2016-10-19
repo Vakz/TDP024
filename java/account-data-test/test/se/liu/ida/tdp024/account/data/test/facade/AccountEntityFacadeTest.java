@@ -44,6 +44,7 @@ public class AccountEntityFacadeTest {
     
     @Test
     public void testFindWithResult() throws Exception {
+        accountEntityFacade.create(Account.Type.CHECK, "1e8a4f8a29989789cbb6726f14934f2f", "7fe7b9a7b3a9168cfbd1a2af2c58aaa6");
         List<Account> result = accountEntityFacade.find("1e8a4f8a29989789cbb6726f14934f2f");
         Assert.assertEquals("1e8a4f8a29989789cbb6726f14934f2f", result.get(0).getPersonKey());
     }

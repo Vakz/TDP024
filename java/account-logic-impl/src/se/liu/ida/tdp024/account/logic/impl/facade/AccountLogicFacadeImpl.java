@@ -33,7 +33,14 @@ public class AccountLogicFacadeImpl implements AccountLogicFacade {
 
     @Override
     public String find(String name) throws IllegalArgumentException {
-        PersonDTO person = getPerson(name);
+        PersonDTO person;
+        try {
+            person = getPerson(name);
+        } catch (IllegalArgumentException e) {
+            log(AccountLoggerLevel.ERROR, e.getMessage());
+            throw e;
+        }
+        
         AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
         List<Account> accounts = accountEntityFacade.find(person.getKey());
         return serializer.toJson(accounts);
@@ -41,8 +48,15 @@ public class AccountLogicFacadeImpl implements AccountLogicFacade {
 
     @Override
     public String create(String type, String bank, String name) throws Exception{
-        PersonDTO persondto = getPerson(name);
-        BankDTO bankdto = getBank(bank);
+        PersonDTO persondto;
+        BankDTO bankdto;
+        try {
+            persondto = getPerson(name);
+            bankdto = getBank(bank);
+        } catch (IllegalArgumentException e) {
+            log(AccountLoggerLevel.ERROR, e.getMessage());
+            throw e;
+        }
         
         try {
            accountEntityFacade.create(Account.Type.fromString(type), persondto.getKey(), bankdto.getKey());
@@ -54,24 +68,26 @@ public class AccountLogicFacadeImpl implements AccountLogicFacade {
         return "OK";
     }
     
-    private PersonDTO getPerson(String name) {
+    private PersonDTO getPerson(String name) throws IllegalArgumentException {
         if (name == null || name.trim().isEmpty()) {
             log(AccountLoggerLevel.WARNING, "Got empty person name as parameter");
             throw new IllegalArgumentException("Name cannot be empty");
         }
         final String url = PERSON_ENDPOINT + "/find.name";
         String json = helper.get(url, "name", name);
+        if (json.equals("null")) throw new IllegalArgumentException("Person does not exist");
         AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
         return serializer.fromJson(json, PersonDTO.class);
     }
     
-    private BankDTO getBank(String name) {
+    private BankDTO getBank(String name) throws IllegalArgumentException {
         if (name == null || name.trim().isEmpty()) {
             log(AccountLoggerLevel.WARNING, "Got empty bank name as parameter");
             throw new IllegalArgumentException("Name cannot be empty");
         }
         final String url = BANK_ENDPOINT + "/find.name";
         String json = helper.get(url, "name", name);
+        if (json.equals("null")) throw new IllegalArgumentException("Bank does not exist");
         AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
         return serializer.fromJson(json, BankDTO.class);
     }
