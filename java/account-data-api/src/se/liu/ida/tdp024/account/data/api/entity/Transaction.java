@@ -11,31 +11,31 @@ package se.liu.ida.tdp024.account.data.api.entity;
  */
 public interface Transaction {
 
-    public void setId(int id);
+    void setId(int id);
 
-    public int getId();
+    int getId();
 
-    public void setType(Type type);
+    void setType(Type type);
 
-    public Type getType();
+    Type getType();
 
-    public void setAmount(int amount);
+    void setAmount(int amount);
 
-    public int getAmount();
+    int getAmount();
 
-    public void setCreated(String date);
+    void setCreated(String date);
 
-    public String getCreated();
+    String getCreated();
 
-    public void setStatus(Status status);
+    void setStatus(Status status);
 
-    public Status getStatus();
+    Status getStatus();
 
-    public void setAccount(Account account);
+    void setAccount(Account account);
 
-    public Account getAccount();
+    Account getAccount();
 
-    public enum Type {
+    enum Type {
 
         DEBIT("DEBIT"),
         CREDIT("CREDIT");
@@ -45,24 +45,13 @@ public interface Transaction {
         private Type(String type) {
             this.type = type;
         }
-
-        ;
         
         public String getType() {
             return this.type;
         }
-
-        public Type fromString(String type) {
-            for (Type value : Type.values()) {
-                if (value.getType().equals(type)) {
-                    return value;
-                }
-            }
-            throw new IllegalArgumentException("Type has no corresponding value");
-        }
     }
 
-    public enum Status {
+    enum Status {
 
         OK("OK"),
         FAILED("FAILED");
@@ -75,15 +64,6 @@ public interface Transaction {
 
         public String getStatus() {
             return this.status;
-        }
-
-        public Status fromString(String status) {
-            for (Status value : Status.values()) {
-                if (value.getStatus().equals(status)) {
-                    return value;
-                }
-            }
-            throw new IllegalArgumentException("Status has no corresponding value");
         }
     }
 

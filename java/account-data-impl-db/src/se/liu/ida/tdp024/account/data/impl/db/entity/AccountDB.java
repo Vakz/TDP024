@@ -1,6 +1,5 @@
 package se.liu.ida.tdp024.account.data.impl.db.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,9 +26,11 @@ public class AccountDB implements Account {
     }
 
     @Override
-    public void setId(int id) throws IllegalArgumentException {
+    public void setId(int id) {
         if (id < 0)
+        {
             throw new IllegalArgumentException("Invalid id");
+        }
         this.id = id;
     }
 
@@ -39,9 +40,10 @@ public class AccountDB implements Account {
     }
 
     @Override
-    public void setPersonKey(String key) throws IllegalArgumentException {
-        if(key == null || key.isEmpty())
+    public void setPersonKey(String key) {
+        if(key == null || key.isEmpty()) {
             throw new IllegalArgumentException("Invalid personkey");
+        }
         this.personKey = key;
     }
 
@@ -61,9 +63,11 @@ public class AccountDB implements Account {
     }
 
     @Override
-    public void setBankKey(String key) throws IllegalArgumentException {
+    public void setBankKey(String key) {
         if (key == null || key.isEmpty())
+        {
             throw new IllegalArgumentException("Invalid bankkey");
+        }
         this.bankKey = key;
     }
 
@@ -73,7 +77,7 @@ public class AccountDB implements Account {
     }
 
     @Override
-    public void setHoldings(int amount) throws IllegalArgumentException {
+    public void setHoldings(int amount) {
         this.holdings = amount;
     }
 

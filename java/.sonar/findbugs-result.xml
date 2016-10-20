@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="2.0.1" sequence="0" timestamp="1476974838000" analysisTimestamp="1476974928312" release="">
+  <Project>
+    <Jar>/home/frejo105/Kurser/TDP024/java/account-data-api/build/classes</Jar>
+    <Jar>/home/frejo105/Kurser/TDP024/java/account-data-impl-db/build/classes</Jar>
+    <Jar>/home/frejo105/Kurser/TDP024/java/account-logic-api/build/classes</Jar>
+    <Jar>/home/frejo105/Kurser/TDP024/java/account-logic-impl/build/classes</Jar>
+    <Jar>/home/frejo105/Kurser/TDP024/java/account-rest/build/web/WEB-INF/classes</Jar>
+    <Jar>/home/frejo105/Kurser/TDP024/java/account-util/build/classes</Jar>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/ant-contrib-1.0b3.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/derby.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/eclipselink-2.3.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jackson-annotations-2.2.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jackson-core-2.2.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jackson-databind-2.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jacocoagent.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jacocoant.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/javax.persistence-2.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/junit-4.10.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/org-netbeans-modules-java-j2seproject-copylibstask.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/org.eclipse.persistence.jpa.jpql_1.0.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/sonar-ant-task-2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jaxb/activation.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jaxb/jaxb-api.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jaxb/jsr173_api.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/asm-3.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jackson-core-asl-1.7.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jackson-jaxrs-1.7.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jackson-mapper-asl-1.7.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jackson-xc-1.7.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-apache-client-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-atom-abdera-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-client-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-core-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-guice-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-json-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-multipart-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-server-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-simple-server-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-spring-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jettison-1.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/jsr311-api-1.1.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/oauth-client-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/oauth-server-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/frejo105/Kurser/TDP024/java/lib/jersey/oauth-signature-1.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/tmp/findbugs1695655718305144748.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/tmp/findbugs4911975275718252622.jar</AuxClasspathEntry>
+    <SrcDir>/home/frejo105/Kurser/TDP024/java/account-data-api/src</SrcDir>
+    <SrcDir>/home/frejo105/Kurser/TDP024/java/account-data-impl-db/src</SrcDir>
+    <SrcDir>/home/frejo105/Kurser/TDP024/java/account-logic-api/src</SrcDir>
+    <SrcDir>/home/frejo105/Kurser/TDP024/java/account-logic-impl/src</SrcDir>
+    <SrcDir>/home/frejo105/Kurser/TDP024/java/account-rest/src/java</SrcDir>
+  </Project>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" abbrev="Dm" category="I18N" instanceHash="c85fd81faf814e583696d15babc2a547" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="19">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in se.liu.ida.tdp024.account.util.http.HTTPHelperImpl.get(String, String[]): new java.io.InputStreamReader(InputStream)</LongMessage>
+    <Class classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" primary="true">
+      <SourceLine classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" start="15" end="150" sourcefile="HTTPHelperImpl.java" sourcepath="se/liu/ida/tdp024/account/util/http/HTTPHelperImpl.java">
+        <Message>At HTTPHelperImpl.java:[lines 15-150]</Message>
+      </SourceLine>
+      <Message>In class se.liu.ida.tdp024.account.util.http.HTTPHelperImpl</Message>
+    </Class>
+    <Method classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" name="get" signature="(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" isStatic="false" primary="true">
+      <SourceLine classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" start="22" end="41" startBytecode="0" endBytecode="410" sourcefile="HTTPHelperImpl.java" sourcepath="se/liu/ida/tdp024/account/util/http/HTTPHelperImpl.java"/>
+      <Message>In method se.liu.ida.tdp024.account.util.http.HTTPHelperImpl.get(String, String[])</Message>
+    </Method>
+    <Method classname="java.io.InputStreamReader" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.InputStreamReader" start="72" end="79" startBytecode="0" endBytecode="146" sourcefile="InputStreamReader.java" sourcepath="java/io/InputStreamReader.java"/>
+      <Message>Called method new java.io.InputStreamReader(InputStream)</Message>
+    </Method>
+    <SourceLine classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" primary="true" start="33" end="33" startBytecode="51" endBytecode="51" sourcefile="HTTPHelperImpl.java" sourcepath="se/liu/ida/tdp024/account/util/http/HTTPHelperImpl.java">
+      <Message>At HTTPHelperImpl.java:[line 33]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" abbrev="SBSC" category="PERFORMANCE" instanceHash="556224d6686b49563ddd65395bee97f1" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Method concatenates strings using + in a loop</ShortMessage>
+    <LongMessage>se.liu.ida.tdp024.account.util.http.HTTPHelperImpl.get(String, String[]) concatenates strings using + in a loop</LongMessage>
+    <Class classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" primary="true">
+      <SourceLine classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" start="15" end="150" sourcefile="HTTPHelperImpl.java" sourcepath="se/liu/ida/tdp024/account/util/http/HTTPHelperImpl.java">
+        <Message>At HTTPHelperImpl.java:[lines 15-150]</Message>
+      </SourceLine>
+      <Message>In class se.liu.ida.tdp024.account.util.http.HTTPHelperImpl</Message>
+    </Class>
+    <Method classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" name="get" signature="(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" isStatic="false" primary="true">
+      <SourceLine classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" start="22" end="41" startBytecode="0" endBytecode="410" sourcefile="HTTPHelperImpl.java" sourcepath="se/liu/ida/tdp024/account/util/http/HTTPHelperImpl.java"/>
+      <Message>In method se.liu.ida.tdp024.account.util.http.HTTPHelperImpl.get(String, String[])</Message>
+    </Method>
+    <SourceLine classname="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" primary="true" start="35" end="35" startBytecode="70" endBytecode="70" sourcefile="HTTPHelperImpl.java" sourcepath="se/liu/ida/tdp024/account/util/http/HTTPHelperImpl.java">
+      <Message>At HTTPHelperImpl.java:[line 35]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SS_SHOULD_BE_STATIC" priority="2" abbrev="SS" category="PERFORMANCE" instanceHash="2733359990253cfdf5629ad48857e242" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Unread field: should this field be static?</ShortMessage>
+    <LongMessage>Unread field: se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl.LOGGER_URL; should this field be static?</LongMessage>
+    <Class classname="se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl" primary="true">
+      <SourceLine classname="se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl" start="7" end="20" sourcefile="AccountLoggerImpl.java" sourcepath="se/liu/ida/tdp024/account/util/logger/AccountLoggerImpl.java">
+        <Message>At AccountLoggerImpl.java:[lines 7-20]</Message>
+      </SourceLine>
+      <Message>In class se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl</Message>
+    </Class>
+    <Field classname="se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl" name="LOGGER_URL" signature="Ljava/lang/String;" isStatic="false" primary="true">
+      <SourceLine classname="se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl" sourcefile="AccountLoggerImpl.java" sourcepath="se/liu/ida/tdp024/account/util/logger/AccountLoggerImpl.java">
+        <Message>In AccountLoggerImpl.java</Message>
+      </SourceLine>
+      <Message>Field se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl.LOGGER_URL</Message>
+    </Field>
+    <SourceLine classname="se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl" primary="true" start="9" end="9" startBytecode="7" endBytecode="7" sourcefile="AccountLoggerImpl.java" sourcepath="se/liu/ida/tdp024/account/util/logger/AccountLoggerImpl.java">
+      <Message>At AccountLoggerImpl.java:[line 9]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="I18N">
+    <Description>Internationalization</Description>
+  </BugCategory>
+  <BugCategory category="PERFORMANCE">
+    <Description>Performance</Description>
+  </BugCategory>
+  <BugPattern type="DM_DEFAULT_ENCODING" abbrev="Dm" category="I18N">
+    <ShortDescription>Reliance on default encoding</ShortDescription>
+    <Details><![CDATA[
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      ]]></Details>
+  </BugPattern>
+  <BugPattern type="SS_SHOULD_BE_STATIC" abbrev="SS" category="PERFORMANCE">
+    <ShortDescription>Unread field: should this field be static?</ShortDescription>
+    <Details><![CDATA[
+
+  <p> This class contains an instance final field that
+   is initialized to a compile-time static value.
+   Consider making the field static.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="SBSC_USE_STRINGBUFFER_CONCATENATION" abbrev="SBSC" category="PERFORMANCE">
+    <ShortDescription>Method concatenates strings using + in a loop</ShortDescription>
+    <Details><![CDATA[
+
+<p> The method seems to be building a String using concatenation in a loop.
+In each iteration, the String is converted to a StringBuffer/StringBuilder,
+   appended to, and converted back to a String.
+   This can lead to a cost quadratic in the number of iterations,
+   as the growing string is recopied in each iteration. </p>
+
+<p>Better performance can be obtained by using
+a StringBuffer (or StringBuilder in Java 1.5) explicitly.</p>
+
+<p> For example:</p>
+<pre>
+  // This is bad
+  String s = "";
+  for (int i = 0; i &lt; field.length; ++i) {
+    s = s + field[i];
+  }
+
+  // This is better
+  StringBuffer buf = new StringBuffer();
+  for (int i = 0; i &lt; field.length; ++i) {
+    buf.append(field[i]);
+  }
+  String s = buf.toString();
+</pre>
+
+    ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="SBSC">
+    <Description>String concatenation in loop using + operator</Description>
+  </BugCode>
+  <BugCode abbrev="SS">
+    <Description>Unread field should be static</Description>
+  </BugCode>
+  <BugCode abbrev="Dm">
+    <Description>Dubious method used</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Thu, 20 Oct 2016 16:47:18 +0200" total_classes="29" referenced_classes="122" total_bugs="3" total_size="612" num_packages="14" vm_version="24.111-b01" cpu_seconds="17.67" clock_seconds="5.62" peak_mbytes="411.34" alloc_mbytes="14265.00" gc_seconds="0.08" priority_2="2" priority_1="1">
+    <FileStats path="se/liu/ida/tdp024/account/data/api/entity/Account.java" bugCount="0" size="33"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/api/entity/Transaction.java" bugCount="0" size="47"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/api/facade/AccountEntityFacade.java" bugCount="0" size="3"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/api/facade/TransactionEntityFacade.java" bugCount="0" size="4"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/api/util/StorageFacade.java" bugCount="0" size="2"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/impl/db/entity/AccountDB.java" bugCount="0" size="41"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/impl/db/entity/TransactionDB.java" bugCount="0" size="48"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/impl/db/facade/AccountEntityFacadeDB.java" bugCount="0" size="32"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/impl/db/facade/TransactionEntityFacadeDB.java" bugCount="0" size="78"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/impl/db/util/EMF.java" bugCount="0" size="16"/>
+    <FileStats path="se/liu/ida/tdp024/account/data/impl/db/util/StorageFacadeDB.java" bugCount="0" size="6"/>
+    <FileStats path="se/liu/ida/tdp024/account/logic/api/facade/AccountLogicFacade.java" bugCount="0" size="3"/>
+    <FileStats path="se/liu/ida/tdp024/account/logic/api/facade/TransactionLogicFacade.java" bugCount="0" size="4"/>
+    <FileStats path="se/liu/ida/tdp024/account/logic/impl/facade/AccountLogicFacadeImpl.java" bugCount="0" size="57"/>
+    <FileStats path="se/liu/ida/tdp024/account/logic/impl/facade/TransactionLogicFacadeImpl.java" bugCount="0" size="20"/>
+    <FileStats path="se/liu/ida/tdp024/account/rest/service/AccountService.java" bugCount="0" size="39"/>
+    <FileStats path="se/liu/ida/tdp024/account/rest/util/ApplicationConfiguration.java" bugCount="0" size="4"/>
+    <FileStats path="se/liu/ida/tdp024/account/util/http/HTTPHelper.java" bugCount="0" size="3"/>
+    <FileStats path="se/liu/ida/tdp024/account/util/http/HTTPHelperImpl.java" bugCount="2" size="77" bugHash="1ddff543b1cc2b9d15babd09258c1181"/>
+    <FileStats path="se/liu/ida/tdp024/account/util/json/AccountJsonSerializer.java" bugCount="0" size="3"/>
+    <FileStats path="se/liu/ida/tdp024/account/util/json/AccountJsonSerializerImpl.java" bugCount="0" size="24"/>
+    <FileStats path="se/liu/ida/tdp024/account/util/logger/AccountLogger.java" bugCount="0" size="26"/>
+    <FileStats path="se/liu/ida/tdp024/account/util/logger/AccountLoggerImpl.java" bugCount="1" size="12" bugHash="59f1ef3368a6fcd68e636bd436926a42"/>
+    <FileStats path="se/liu/tdp024/account/logic/impl/dto/BankDTO.java" bugCount="0" size="15"/>
+    <FileStats path="se/liu/tdp024/account/logic/impl/dto/PersonDTO.java" bugCount="0" size="15"/>
+    <PackageStats package="se.liu.ida.tdp024.account.data.api.entity" total_bugs="0" total_types="5" total_size="80">
+      <ClassStats class="se.liu.ida.tdp024.account.data.api.entity.Account" sourceFile="Account.java" interface="true" size="11" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.data.api.entity.Account$Type" sourceFile="Account.java" interface="false" size="22" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.data.api.entity.Transaction" sourceFile="Transaction.java" interface="true" size="13" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.data.api.entity.Transaction$Status" sourceFile="Transaction.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.data.api.entity.Transaction$Type" sourceFile="Transaction.java" interface="false" size="17" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.data.api.facade" total_bugs="0" total_types="2" total_size="7">
+      <ClassStats class="se.liu.ida.tdp024.account.data.api.facade.AccountEntityFacade" sourceFile="AccountEntityFacade.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.data.api.facade.TransactionEntityFacade" sourceFile="TransactionEntityFacade.java" interface="true" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.data.api.util" total_bugs="0" total_types="1" total_size="2">
+      <ClassStats class="se.liu.ida.tdp024.account.data.api.util.StorageFacade" sourceFile="StorageFacade.java" interface="true" size="2" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.data.impl.db.entity" total_bugs="0" total_types="2" total_size="89">
+      <ClassStats class="se.liu.ida.tdp024.account.data.impl.db.entity.AccountDB" sourceFile="AccountDB.java" interface="false" size="41" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.data.impl.db.entity.TransactionDB" sourceFile="TransactionDB.java" interface="false" size="48" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.data.impl.db.facade" total_bugs="0" total_types="2" total_size="110">
+      <ClassStats class="se.liu.ida.tdp024.account.data.impl.db.facade.AccountEntityFacadeDB" sourceFile="AccountEntityFacadeDB.java" interface="false" size="32" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.data.impl.db.facade.TransactionEntityFacadeDB" sourceFile="TransactionEntityFacadeDB.java" interface="false" size="78" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.data.impl.db.util" total_bugs="0" total_types="2" total_size="22">
+      <ClassStats class="se.liu.ida.tdp024.account.data.impl.db.util.EMF" sourceFile="EMF.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.data.impl.db.util.StorageFacadeDB" sourceFile="StorageFacadeDB.java" interface="false" size="6" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.logic.api.facade" total_bugs="0" total_types="2" total_size="7">
+      <ClassStats class="se.liu.ida.tdp024.account.logic.api.facade.AccountLogicFacade" sourceFile="AccountLogicFacade.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.logic.api.facade.TransactionLogicFacade" sourceFile="TransactionLogicFacade.java" interface="true" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.logic.impl.facade" total_bugs="0" total_types="2" total_size="77">
+      <ClassStats class="se.liu.ida.tdp024.account.logic.impl.facade.AccountLogicFacadeImpl" sourceFile="AccountLogicFacadeImpl.java" interface="false" size="57" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.logic.impl.facade.TransactionLogicFacadeImpl" sourceFile="TransactionLogicFacadeImpl.java" interface="false" size="20" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.rest.service" total_bugs="0" total_types="1" total_size="39">
+      <ClassStats class="se.liu.ida.tdp024.account.rest.service.AccountService" sourceFile="AccountService.java" interface="false" size="39" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.rest.util" total_bugs="0" total_types="1" total_size="4">
+      <ClassStats class="se.liu.ida.tdp024.account.rest.util.ApplicationConfiguration" sourceFile="ApplicationConfiguration.java" interface="false" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.util.http" total_bugs="2" total_types="2" total_size="80" priority_2="1" priority_1="1">
+      <ClassStats class="se.liu.ida.tdp024.account.util.http.HTTPHelper" sourceFile="HTTPHelper.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.util.http.HTTPHelperImpl" sourceFile="HTTPHelperImpl.java" interface="false" size="77" bugs="2" priority_2="1" priority_1="1"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.util.json" total_bugs="0" total_types="2" total_size="27">
+      <ClassStats class="se.liu.ida.tdp024.account.util.json.AccountJsonSerializer" sourceFile="AccountJsonSerializer.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.util.json.AccountJsonSerializerImpl" sourceFile="AccountJsonSerializerImpl.java" interface="false" size="24" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.liu.ida.tdp024.account.util.logger" total_bugs="1" total_types="3" total_size="38" priority_2="1">
+      <ClassStats class="se.liu.ida.tdp024.account.util.logger.AccountLogger" sourceFile="AccountLogger.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.util.logger.AccountLogger$AccountLoggerLevel" sourceFile="AccountLogger.java" interface="false" size="23" bugs="0"/>
+      <ClassStats class="se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl" sourceFile="AccountLoggerImpl.java" interface="false" size="12" bugs="1" priority_2="1"/>
+    </PackageStats>
+    <PackageStats package="se.liu.tdp024.account.logic.impl.dto" total_bugs="0" total_types="2" total_size="30">
+      <ClassStats class="se.liu.tdp024.account.logic.impl.dto.BankDTO" sourceFile="BankDTO.java" interface="false" size="15" bugs="0"/>
+      <ClassStats class="se.liu.tdp024.account.logic.impl.dto.PersonDTO" sourceFile="PersonDTO.java" interface="false" size="15" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="581" invocations="805" avgMicrosecondsPerInvocation="722" maxMicrosecondsPerInvocation="40514" standardDeviationMircosecondsPerInvocation="1859"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="421" invocations="122" avgMicrosecondsPerInvocation="3454" maxMicrosecondsPerInvocation="44089" standardDeviationMircosecondsPerInvocation="7847"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="380" invocations="811" avgMicrosecondsPerInvocation="468" maxMicrosecondsPerInvocation="1619" standardDeviationMircosecondsPerInvocation="220"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="345" invocations="122" avgMicrosecondsPerInvocation="2832" maxMicrosecondsPerInvocation="35936" standardDeviationMircosecondsPerInvocation="6099"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="205" invocations="111" avgMicrosecondsPerInvocation="1847" maxMicrosecondsPerInvocation="24032" standardDeviationMircosecondsPerInvocation="3773"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="202" invocations="122" avgMicrosecondsPerInvocation="1659" maxMicrosecondsPerInvocation="21550" standardDeviationMircosecondsPerInvocation="3382"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="201" invocations="102" avgMicrosecondsPerInvocation="1971" maxMicrosecondsPerInvocation="47395" standardDeviationMircosecondsPerInvocation="5316"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="197" invocations="111" avgMicrosecondsPerInvocation="1780" maxMicrosecondsPerInvocation="28447" standardDeviationMircosecondsPerInvocation="4156"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="185" invocations="102" avgMicrosecondsPerInvocation="1823" maxMicrosecondsPerInvocation="15452" standardDeviationMircosecondsPerInvocation="3177"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="178" invocations="102" avgMicrosecondsPerInvocation="1746" maxMicrosecondsPerInvocation="24713" standardDeviationMircosecondsPerInvocation="3575"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="164" invocations="400" avgMicrosecondsPerInvocation="411" maxMicrosecondsPerInvocation="20047" standardDeviationMircosecondsPerInvocation="1054"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="108" invocations="72" avgMicrosecondsPerInvocation="1504" maxMicrosecondsPerInvocation="20682" standardDeviationMircosecondsPerInvocation="3154"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="97" invocations="102" avgMicrosecondsPerInvocation="952" maxMicrosecondsPerInvocation="10954" standardDeviationMircosecondsPerInvocation="1816"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="93" invocations="122" avgMicrosecondsPerInvocation="765" maxMicrosecondsPerInvocation="11305" standardDeviationMircosecondsPerInvocation="1470"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="87" invocations="122" avgMicrosecondsPerInvocation="715" maxMicrosecondsPerInvocation="11822" standardDeviationMircosecondsPerInvocation="1662"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="75" invocations="102" avgMicrosecondsPerInvocation="745" maxMicrosecondsPerInvocation="12419" standardDeviationMircosecondsPerInvocation="1972"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="73" invocations="122" avgMicrosecondsPerInvocation="600" maxMicrosecondsPerInvocation="8299" standardDeviationMircosecondsPerInvocation="1319"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="71" invocations="122" avgMicrosecondsPerInvocation="585" maxMicrosecondsPerInvocation="6835" standardDeviationMircosecondsPerInvocation="1190"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

@@ -40,6 +40,18 @@ public class TransactionTest {
     }
     
     @Test
+    public void statusStringConversion() {
+        Assert.assertEquals("OK", Transaction.Status.OK.getStatus());
+        Assert.assertEquals("FAILED", Transaction.Status.FAILED.getStatus());
+    }
+    
+    @Test
+    public void typeStringConversion() {
+        Assert.assertEquals("CREDIT", Transaction.Type.CREDIT.getType());
+        Assert.assertEquals("DEBIT", Transaction.Type.DEBIT.getType());
+    }
+    
+    @Test
     public void setValidId() {
         transaction.setId(10);
         Assert.assertEquals(10, transaction.getId());

@@ -32,7 +32,7 @@ public class AccountEntityFacadeDB implements AccountEntityFacade {
     }
 
     @Override
-    public Account create(Account.Type type, String personKey, String bankKey) throws IllegalArgumentException, Exception {
+    public Account create(Account.Type type, String personKey, String bankKey) {
         EntityManager em = EMF.getEntityManager();
         
         EntityTransaction t = em.getTransaction();
@@ -49,9 +49,6 @@ public class AccountEntityFacadeDB implements AccountEntityFacade {
             return account;
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
-            throw e;
-        } catch (Exception e) {
-            log(AccountLoggerLevel.EMERGENCY, e.getMessage());
             throw e;
         } finally {
             if (em.getTransaction().isActive()) {

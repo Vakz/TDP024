@@ -32,7 +32,7 @@ public class AccountEntityFacadeMock implements AccountEntityFacade {
     }
 
     @Override
-    public Account create(Account.Type type, String personKey, String bankKey) throws IllegalArgumentException, Exception {
+    public Account create(Account.Type type, String personKey, String bankKey) {
         Account account = new AccountDB();
         account.setBankKey(bankKey);
         account.setPersonKey(personKey);

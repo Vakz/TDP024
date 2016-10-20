@@ -3,22 +3,22 @@ package se.liu.ida.tdp024.account.data.api.entity;
 import java.io.Serializable;
 
 public interface Account extends Serializable {
-    public void setId(int id) throws IllegalArgumentException;
-    public int getId();
+    void setId(int id);
+    int getId();
     
-    public void setPersonKey(String key) throws IllegalArgumentException;
-    public String getPersonKey();
+    void setPersonKey(String key);
+    String getPersonKey();
     
-    public void setAccountType(Type type);
-    public Type getAccountType();
+    void setAccountType(Type type);
+    Type getAccountType();
     
-    public void setBankKey(String key) throws IllegalArgumentException;
-    public String getBankKey();
+    void setBankKey(String key);
+    String getBankKey();
     
-    public void setHoldings(int amount) throws IllegalArgumentException;
-    public int getHoldings();
+    void setHoldings(int amount);
+    int getHoldings();
     
-    public enum Type {
+    enum Type {
         CHECK("CHECK"),
         SAVINGS("SAVINGS");
         
@@ -35,8 +35,9 @@ public interface Account extends Serializable {
         
         public static Type fromString(String type) {
             for (Type value : Type.values()) {
-                if (value.getType().equals(type))
+                if (value.getType().equals(type)) {
                     return value;
+                }
             }
             throw new IllegalArgumentException("Type has no corresponding value");
         }

@@ -7,11 +7,11 @@ package se.liu.ida.tdp024.account.data.impl.db.facade;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.Query;
+import javax.persistence.RollbackException;
 import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.data.api.entity.Transaction;
 import se.liu.ida.tdp024.account.data.api.facade.TransactionEntityFacade;
@@ -53,15 +53,15 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         Transaction.Status success = Transaction.Status.FAILED;
         Account account = em.find(AccountDB.class, id, LockModeType.PESSIMISTIC_WRITE);
         try {
-            if (amount <= 0) throw new IllegalArgumentException("Transaction amount must be positive");
+            if (amount <= 0) {
+                throw new IllegalArgumentException("Transaction amount must be positive");
+            }
             account.setHoldings(account.getHoldings() + amount);
             em.merge(account);
             em.getTransaction().commit();
             success = Transaction.Status.OK;
         } catch (IllegalArgumentException e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage() + ", id: " + id + ", amount: " + amount);
-        } catch (Exception e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage() + ", id: " + id + ", amount: " + amount);
+            generateTransactionErrorLog(e.getMessage(), id, amount);
         } finally {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -74,10 +74,8 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
             em.persist(transaction);
             em.getTransaction().commit();
             log(AccountLoggerLevel.INFO, "Inserted new credit transasction for account id " + id);
-        } catch (IllegalArgumentException e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage() + ", id: " + id + ", amount: " + amount);
-        } catch (Exception e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage() + ", id: " + id + ", amount: " + amount);
+        } catch (RollbackException e) {
+            generateTransactionErrorLog(e.getMessage(), id, amount);
         } finally {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -94,7 +92,9 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         Transaction.Status success = Transaction.Status.FAILED;
         Account account = em.find(AccountDB.class, id, LockModeType.PESSIMISTIC_WRITE);
         try {
-            if (amount <= 0) throw new IllegalArgumentException("Transaction amount must be positive");
+            if (amount <= 0) {
+                throw new IllegalArgumentException("Transaction amount must be positive");
+            }
             if (amount > account.getHoldings()) {
                 throw new IllegalArgumentException("Can't debit more than current account holdings");
             }
@@ -103,9 +103,9 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
             em.getTransaction().commit();
             success = Transaction.Status.OK;
         } catch (IllegalArgumentException e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage() + ", id: " + id + ", amount: " + amount);
-        } catch (Exception e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage() + ", id: " + id + ", amount: " + amount);
+            generateTransactionErrorLog(e.getMessage(), id, amount); 
+        } catch (RollbackException e) {
+            generateTransactionErrorLog(e.getMessage(), id, amount);
         } finally {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -118,10 +118,8 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
             em.persist(transaction);
             em.getTransaction().commit();
             log(AccountLoggerLevel.INFO, "Inserted new debit transasction for account id " + id);
-        } catch (IllegalArgumentException e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage() + ", id: " + id + ", amount: " + amount);
-        } catch (Exception e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage() + ", id: " + id + ", amount: " + amount);
+        } catch (RollbackException e) {
+            generateTransactionErrorLog(e.getMessage(), id, amount);
         } finally {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -129,6 +127,10 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
             em.close();
         }
         return success;
+    }
+    
+    private void generateTransactionErrorLog(String error, int id, int amount) {
+        log(AccountLoggerLevel.ERROR, error + ", id: " + id + ", amount: " + amount);
     }
     
     private String getDate() {

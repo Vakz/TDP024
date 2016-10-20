@@ -14,9 +14,6 @@ public class BankDTO {
     private String name;
     
     public void setKey(String key) {
-        if (key == null || key.trim().length() == 0) {
-            throw new IllegalArgumentException("Key cannot be empty");
-        }
         this.key = key;
     }
     
@@ -25,9 +22,6 @@ public class BankDTO {
     }
     
     public void setName(String name) {
-        if (name == null || name.trim().length() == 0) {
-            throw new IllegalArgumentException("Name cannot be empty");
-        }
         this.name = name;
     }
     

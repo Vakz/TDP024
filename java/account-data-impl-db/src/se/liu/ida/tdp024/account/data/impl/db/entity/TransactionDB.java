@@ -23,30 +23,30 @@ public class TransactionDB implements Transaction {
     public TransactionDB(int id, Type type, int amount, String created, Status status, Account account) {
         // Using setters to make sure no validation is circumvented
         // Sort of useless, since they're all simple setters, but probably good practice
-        setId(id);
-        setType(type);
-        setAmount(amount);
-        setCreated(created);
-        setStatus(status);
-        setAccount(account);
+        this.id = id;
+        this.type = type;
+        this.amount = amount;
+        this.created = created;
+        this.status = status;
+        this.account = account;
     }
     
     public TransactionDB() { }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
-    Type type;
+    private Type type;
 
-    int amount;
+    private int amount;
 
-    String created;
+    private String created;
 
-    Status status;
+    private Status status;
 
     @ManyToOne(targetEntity = AccountDB.class)
-    Account account;
+    private Account account;
 
     @Override
     public void setId(int id) {

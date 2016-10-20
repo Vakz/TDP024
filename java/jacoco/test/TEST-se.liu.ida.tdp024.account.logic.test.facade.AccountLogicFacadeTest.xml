@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="parlomba4" name="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" skipped="0" tests="11" time="1.029" timestamp="2016-10-20T14:48:17">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sonar.projectName" value="tdp024_grupp_a3_2016" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="os.name" value="Linux" />
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/classes" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="/usr/share/ant" />
+    <property name="sonar.projectVersion" value="1.0" />
+    <property name="java.runtime.version" value="1.7.0_111-b01" />
+    <property name="sonar.jdbc.password" value="sonar_17f4" />
+    <property name="user.name" value="frejo105" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64" />
+    <property name="ant.project.default-target" value="default" />
+    <property name="ant.project.name" value="tdp024_grupp_a3_2016" />
+    <property name="java.version" value="1.7.0_111" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="jacoco.report.dir" value="jacoco/report" />
+    <property name="sonar.host.url" value="http://www.ida.liu.se/~TDP024/sonar" />
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/endorsed" />
+    <property name="sonar.jdbc.username" value="tdp024_sonar" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="sonar.sources" value="   account-data-api/src,   account-data-impl-db/src,   account-logic-api/src,   account-logic-impl/src,   account-rest/src/java   " />
+    <property name="java.class.version" value="51.0" />
+    <property name="user.country" value="GB" />
+    <property name="java.home" value="/usr/lib/jvm/java-7-openjdk-amd64/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="sonar.libraries" value="lib/*.jar,lib/jaxb/*.jar,lib/jersey/*.jar" />
+    <property name="ant.file" value="/home/frejo105/Kurser/TDP024/java/build.xml" />
+    <property name="os.version" value="4.2.0-42-generic" />
+    <property name="jacoco.test.dir" value="jacoco/test" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="24.111-b01" />
+    <property name="ant.library.dir" value="/usr/share/ant/lib" />
+    <property name="sonar.login" value="grupp-a3-2016" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="ant.file.tdp024_grupp_a3_2016" value="/home/frejo105/Kurser/TDP024/java/build.xml" />
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
+    <property name="_jacoco.agentFile" value="/tmp/jacocoagent5198899184375336245.jar" />
+    <property name="sonar.tests" value="    account-data-test/test,    account-logic-test/test,    account-rest/test    " />
+    <property name="jacoco.exec.file" value="jacoco/jacoco.exec" />
+    <property name="user.home" value="/home/frejo105" />
+    <property name="sonar.binaries" value="   account-data-api/build/classes,   account-data-impl-db/build/classes,   account-logic-api/build/classes,   account-logic-impl/build/classes,   account-rest/build/web/WEB-INF/classes,   account-util/build/classes   " />
+    <property name="sonar.language" value="java" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.library.path" value="/opt/thinlinc/lib64:/opt/thinlinc/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib" />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/frejo105/Kurser/TDP024/java/jacoco/test/TEST-se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest.xml crashfile=/home/frejo105/Kurser/TDP024/java/junitvmwatcher4494126702680134821.properties propsfile=/home/frejo105/Kurser/TDP024/java/junit2701043983594380238.properties" />
+    <property name="java.class.path" value="/home/frejo105/Kurser/TDP024/java/account-data-api/build/classes:/home/frejo105/Kurser/TDP024/java/account-data-impl-db/build/classes:/home/frejo105/Kurser/TDP024/java/account-logic-api/build/classes:/home/frejo105/Kurser/TDP024/java/account-logic-impl/build/classes:/home/frejo105/Kurser/TDP024/java/account-rest/build/web/WEB-INF/classes:/home/frejo105/Kurser/TDP024/java/account-util/build/classes:/home/frejo105/Kurser/TDP024/java/account-data-test/build/test/classes:/home/frejo105/Kurser/TDP024/java/account-logic-test/build/test/classes:/home/frejo105/Kurser/TDP024/java/account-rest/build/test/classes:/home/frejo105/Kurser/TDP024/java/lib/ant-contrib-1.0b3.jar:/home/frejo105/Kurser/TDP024/java/lib/derby.jar:/home/frejo105/Kurser/TDP024/java/lib/eclipselink-2.3.0.jar:/home/frejo105/Kurser/TDP024/java/lib/jackson-annotations-2.2.2.jar:/home/frejo105/Kurser/TDP024/java/lib/jackson-core-2.2.2.jar:/home/frejo105/Kurser/TDP024/java/lib/jackson-databind-2.2.1.jar:/home/frejo105/Kurser/TDP024/java/lib/jacocoagent.jar:/home/frejo105/Kurser/TDP024/java/lib/jacocoant.jar:/home/frejo105/Kurser/TDP024/java/lib/javax.persistence-2.0.jar:/home/frejo105/Kurser/TDP024/java/lib/jaxb/activation.jar:/home/frejo105/Kurser/TDP024/java/lib/jaxb/jaxb-api.jar:/home/frejo105/Kurser/TDP024/java/lib/jaxb/jsr173_api.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/asm-3.1.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jackson-core-asl-1.7.1.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jackson-jaxrs-1.7.1.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jackson-mapper-asl-1.7.1.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jackson-xc-1.7.1.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-apache-client-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-atom-abdera-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-client-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-core-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-guice-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-json-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-multipart-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-server-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-simple-server-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jersey-spring-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jettison-1.1.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/jsr311-api-1.1.1.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/oauth-client-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/oauth-server-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/jersey/oauth-signature-1.8.jar:/home/frejo105/Kurser/TDP024/java/lib/junit-4.10.jar:/home/frejo105/Kurser/TDP024/java/lib/org-netbeans-modules-java-j2seproject-copylibstask.jar:/home/frejo105/Kurser/TDP024/java/lib/org.eclipse.persistence.jpa.jpql_1.0.0.jar:/home/frejo105/Kurser/TDP024/java/lib/sonar-ant-task-2.1.jar:/usr/share/java/ant-launcher-1.9.3.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-junit4.jar:/tmp/jacocoagent5198899184375336245.jar" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.3 compiled on April 8 2014" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="sonar.jdbc.url" value="jdbc:mysql://db.ida.liu.se:3306/tdp024_sonar?useUnicode=true&amp;characterEncoding=utf8" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="ant.file.type.tdp024_grupp_a3_2016" value="file" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="user.dir" value="/home/frejo105/Kurser/TDP024/java" />
+    <property name="sonar.password" value="ohm6l2cx" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
+    <property name="basedir" value="/home/frejo105/Kurser/TDP024/java" />
+    <property name="ant.java.version" value="1.7" />
+    <property name="ant.core.lib" value="/usr/share/ant/lib/ant.jar" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="ant.project.invoked-targets" value="jacoco" />
+    <property name="sonar.projectKey" value="tdp024_grupp_a3_2016" />
+  </properties>
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testFind" time="0.868" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testInvalidWhitespacePersonCreate" time="0.004" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testInvalidWhitespaceBankCreate" time="0.0" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testInvalidNullPersonCreate" time="0.003" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testCreateSavings" time="0.005" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testInvalidWhitespaceFind" time="0.0" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testInvalidNullFind" time="0.0" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testCreateInvalidType" time="0.004" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testCreateCheck" time="0.004" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testInvalidNullBankCreate" time="0.001" />
+  <testcase classname="se.liu.ida.tdp024.account.logic.test.facade.AccountLogicFacadeTest" name="testInvalidType" time="0.004" />
+  <system-out><![CDATA[LOGGING: Got empty bank name as parameter
+LOGGING: Name cannot be empty
+LOGGING: Got empty person name as parameter
+LOGGING: Name cannot be empty
+LOGGING: Got empty bank name as parameter
+LOGGING: Name cannot be empty
+LOGGING: Got empty person name as parameter
+LOGGING: Name cannot be empty
+LOGGING: Got empty person name as parameter
+LOGGING: Name cannot be empty
+LOGGING: CREATE: bank: Emelie, person: Swedbank, error: Type has no corresponding value
+LOGGING: Got empty person name as parameter
+LOGGING: Name cannot be empty
+LOGGING: CREATE: bank: Emelie, person: Swedbank, error: Type has no corresponding value
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

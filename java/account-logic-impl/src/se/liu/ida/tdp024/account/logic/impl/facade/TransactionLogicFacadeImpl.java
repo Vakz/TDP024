@@ -9,7 +9,6 @@ import java.util.List;
 import se.liu.ida.tdp024.account.data.api.entity.Transaction;
 import se.liu.ida.tdp024.account.data.api.facade.TransactionEntityFacade;
 import se.liu.ida.tdp024.account.logic.api.facade.TransactionLogicFacade;
-import se.liu.ida.tdp024.account.util.http.HTTPHelper;
 import se.liu.ida.tdp024.account.util.json.AccountJsonSerializer;
 import se.liu.ida.tdp024.account.util.json.AccountJsonSerializerImpl;
 import se.liu.ida.tdp024.account.util.logger.AccountLogger;
@@ -21,8 +20,8 @@ import se.liu.ida.tdp024.account.util.logger.AccountLogger.AccountLoggerLevel;
  */
 public class TransactionLogicFacadeImpl implements TransactionLogicFacade {
     
-    TransactionEntityFacade transactionEntityFacade;
-    AccountLogger logger;
+    private final TransactionEntityFacade transactionEntityFacade;
+    private final AccountLogger logger;
     
     private void log(AccountLogger.AccountLoggerLevel level, String message) {
         logger.log(level, "TransactionLogicFacade", message);

@@ -18,10 +18,11 @@ import se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl;
 @Path("/account")
 public class AccountService {
     
-    AccountLogger logger = new AccountLoggerImpl();
-    AccountLogicFacade accountLogicFacade = new AccountLogicFacadeImpl(new AccountEntityFacadeDB(logger), new HTTPHelperImpl(), logger);
-    TransactionLogicFacade transactionLogicFacade = new TransactionLogicFacadeImpl(new TransactionEntityFacadeDB(logger), logger);
-    
+    private final AccountLogger logger = new AccountLoggerImpl();
+    private final AccountLogicFacade accountLogicFacade = new AccountLogicFacadeImpl(new AccountEntityFacadeDB(logger), new HTTPHelperImpl(), logger);
+    private final TransactionLogicFacade transactionLogicFacade = new TransactionLogicFacadeImpl(new TransactionEntityFacadeDB(logger), logger);
+    private static final String FAILURE_RESPONSE = "FAILED";
+   
     private void log(AccountLogger.AccountLoggerLevel level, String message) {
         logger.log(level, "AccountService", message);
     }
@@ -35,12 +36,10 @@ public class AccountService {
             return Response.ok().entity(res).build();
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
-            return Response.status(Response.Status.OK).entity("FAILED").build();
-        } catch (Exception e) {
-            log(AccountLoggerLevel.EMERGENCY, "UNKNOWN CREATE ERROR: " + e.getMessage());
-            return Response.serverError().build();
-        }        
+            return Response.status(Response.Status.OK).entity(FAILURE_RESPONSE).build();
+        }       
     }
+    
     
     @GET
     @Path("credit")
@@ -48,58 +47,35 @@ public class AccountService {
         try {
             String res = transactionLogicFacade.credit(id, amount);
             log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL CREDIT: account: " + id + ", amount: " + amount);
-            if (res.equals("FAILED")) throw new IllegalArgumentException("Invalid amount");
+            if (res.equals(FAILURE_RESPONSE)) {
+                throw new IllegalArgumentException("Invalid amount");
+            }
             return Response.ok(res).build();
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
-            return Response.status(Response.Status.OK).entity("FAILED").build();
-        } catch (Exception e) {
-            log(AccountLoggerLevel.EMERGENCY, "UNKNOWN CREDIT ERROR: " + e.getMessage());
-            return Response.serverError().build();
-        } 
+            return Response.status(Response.Status.OK).entity(FAILURE_RESPONSE).build();
+        }
     }
     
     @GET
     @Path("debit")
     public Response debit(@QueryParam("id") int id, @QueryParam("amount") int amount) {
-        try {
-            String res = transactionLogicFacade.debit(id, amount);
-            log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL DEBIT: account: " + id + ", amount: " + amount);
-            //if (res.equals("FAILED")) throw new IllegalArgumentException("Invalid amount");
-            return Response.ok(res).build();
-        } catch (IllegalArgumentException e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage());
-            return Response.status(Response.Status.OK).entity("FAILED").build();
-        } catch (Exception e) {
-            log(AccountLoggerLevel.EMERGENCY, "UNKNOWN DEBIT ERROR: " + e.getMessage());
-            return Response.serverError().build();
-        } 
+        String res = transactionLogicFacade.debit(id, amount);
+        log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL DEBIT: account: " + id + ", amount: " + amount);
+        return Response.ok(res).build();
     }
     
     @GET
     @Path("transactions")
     public Response transactions(@QueryParam("id") int id) {
-        try {
-            String res = transactionLogicFacade.transactions(id);
-            return Response.ok(res).build();
-        } catch (Exception e) {
-            log(AccountLoggerLevel.EMERGENCY, "UNKNOWN TRANSACTION ERROR: " + e.getMessage());
-            return Response.serverError().build();
-        }
+        String res = transactionLogicFacade.transactions(id);
+        return Response.ok(res).build();
     }
     
     @GET
     @Path("find/name")
     public Response findAccounts(@QueryParam("name") String name) {
-        try {
-            String res = accountLogicFacade.find(name);
-            return Response.ok(res).build();
-        } catch (IllegalArgumentException e) {
-            log(AccountLoggerLevel.ERROR, e.getMessage());
-            return Response.status(Response.Status.OK).entity(e.getMessage()).build();
-        } catch (Exception e) {
-            log(AccountLoggerLevel.EMERGENCY, "UNKNOWN FIND ERROR: " + e.getMessage());
-            return Response.serverError().build();
-        }
+        String res = accountLogicFacade.find(name);
+        return Response.ok(res).build();
     }
 }

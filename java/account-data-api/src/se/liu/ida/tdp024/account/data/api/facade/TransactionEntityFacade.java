@@ -14,10 +14,10 @@ import se.liu.ida.tdp024.account.data.api.entity.Transaction;
  */
 public interface TransactionEntityFacade {
     
-    public List<Transaction> transactions(int id);
+    List<Transaction> transactions(int id);
     
-    public Transaction.Status credit(int id, int amount);
+    Transaction.Status credit(int id, int amount);
     
-    public Transaction.Status debit(int id, int amount);
+    Transaction.Status debit(int id, int amount);
     
 }
