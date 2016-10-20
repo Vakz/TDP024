@@ -5,15 +5,11 @@
  */
 package se.liu.ida.tdp024.account.data.impl.db.entity;
 
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import static javax.persistence.TemporalType.DATE;
 import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.data.api.entity.Transaction;
 
@@ -24,6 +20,19 @@ import se.liu.ida.tdp024.account.data.api.entity.Transaction;
 @Entity
 public class TransactionDB implements Transaction {
 
+    public TransactionDB(int id, Type type, int amount, String created, Status status, Account account) {
+        // Using setters to make sure no validation is circumvented
+        // Sort of useless, since they're all simple setters, but probably good practice
+        setId(id);
+        setType(type);
+        setAmount(amount);
+        setCreated(created);
+        setStatus(status);
+        setAccount(account);
+    }
+    
+    public TransactionDB() { }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
@@ -31,8 +40,8 @@ public class TransactionDB implements Transaction {
     Type type;
 
     int amount;
-    @Temporal(DATE)
-    Date created;
+
+    String created;
 
     Status status;
 
@@ -70,12 +79,12 @@ public class TransactionDB implements Transaction {
     }
 
     @Override
-    public void setCreated(Date date) {
+    public void setCreated(String date) {
         this.created = date;
     }
 
     @Override
-    public Date getCreated() {
+    public String getCreated() {
         return created;
     }
 

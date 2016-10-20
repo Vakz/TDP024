@@ -5,8 +5,6 @@
  */
 package se.liu.ida.tdp024.account.data.api.entity;
 
-import java.util.Date;
-
 /**
  *
  * @author frejo105
@@ -25,9 +23,9 @@ public interface Transaction {
 
     public int getAmount();
 
-    public void setCreated(Date date);
+    public void setCreated(String date);
 
-    public Date getCreated();
+    public String getCreated();
 
     public void setStatus(Status status);
 

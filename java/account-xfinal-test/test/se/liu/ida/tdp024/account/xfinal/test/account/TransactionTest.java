@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import se.liu.ida.tdp024.account.util.http.HTTPHelper;
 import se.liu.ida.tdp024.account.util.http.HTTPHelperImpl;
@@ -39,18 +41,12 @@ public class TransactionTest {
         AccountDTO accountDTO = accountDTos[0];
 
 
-        String res = httpHelper.get(FinalConstants.ENDPOINT + "account/credit", "id", accountDTO.getId() + "", "amount", 200 + "");
-        System.out.println("RESULT IS: " + res);
-        res = httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 50 + "");
-        System.out.println("RESULT IS: " + res);
-        res = httpHelper.get(FinalConstants.ENDPOINT + "account/credit", "id", accountDTO.getId() + "", "amount", 25 + "");
-        System.out.println("RESULT IS: " + res);
-        res = httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 100 + "");
-        System.out.println("RESULT IS: " + res);
-        res = httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 75 + "");
-        System.out.println("RESULT IS: " + res);
-        res = httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 10 + "");
-        System.out.println("RESULT IS: " + res);
+        httpHelper.get(FinalConstants.ENDPOINT + "account/credit", "id", accountDTO.getId() + "", "amount", 200 + "");
+        httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 50 + "");
+        httpHelper.get(FinalConstants.ENDPOINT + "account/credit", "id", accountDTO.getId() + "", "amount", 25 + "");
+        httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 100 + "");
+        httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 75 + "");
+        httpHelper.get(FinalConstants.ENDPOINT + "account/debit", "id", accountDTO.getId() + "", "amount", 10 + "");
 
 
         String transactionJson = httpHelper.get(FinalConstants.ENDPOINT + "account/transactions", "id", accountDTO.getId() + "");

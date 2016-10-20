@@ -34,7 +34,7 @@ public class TransactionLogicFacadeImpl implements TransactionLogicFacade {
     }
 
     @Override
-    public String transaction(int id) {
+    public String transactions(int id) {
         List<Transaction> transactions = transactionEntityFacade.transactions(id);
         log(AccountLoggerLevel.INFO, "FOUND TRANSACTIONS, total " + transactions.size() + " results");
         AccountJsonSerializer serializer = new AccountJsonSerializerImpl();

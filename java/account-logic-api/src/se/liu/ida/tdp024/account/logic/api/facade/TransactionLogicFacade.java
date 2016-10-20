@@ -10,9 +10,10 @@ package se.liu.ida.tdp024.account.logic.api.facade;
  * @author frejo105
  */
 public interface TransactionLogicFacade {
-    public String transaction(int id);
-    
+
+    public String transactions(int id);
+
     public String credit(int id, int amount);
-    
+
     public String debit(int id, int amount);
 }

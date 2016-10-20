@@ -20,7 +20,6 @@ import se.liu.ida.tdp024.account.data.api.util.StorageFacade;
 import se.liu.ida.tdp024.account.data.impl.db.facade.AccountEntityFacadeDB;
 import se.liu.ida.tdp024.account.data.impl.db.facade.TransactionEntityFacadeDB;
 import se.liu.ida.tdp024.account.data.impl.db.util.StorageFacadeDB;
-import se.liu.ida.tdp024.account.util.logger.AccountLogger;
 import se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl;
 
 /**
@@ -37,12 +36,11 @@ public class TransactionEntityFacadeTest {
     //---- Variables needed for multiple tests
     private static int id;
     
-    @BeforeClass
-    public static void setup() throws Exception {
+    @Before
+    public void setup() throws Exception {
         Account account = accountEntityFacade.create(Account.Type.CHECK, "1e8a4f8a29989789cbb6726f14934f2f", "7fe7b9a7b3a9168cfbd1a2af2c58aaa6");
         
         id = account.getId();
-        System.out.println("ID: " + id);
     }
    
     
@@ -73,8 +71,16 @@ public class TransactionEntityFacadeTest {
     
     @Test
     public void testOverdraftDebit() {
-        Transaction.Status result = transactionEntityFacade.debit(id, 500);
+        Transaction.Status result = transactionEntityFacade.debit(id, 10);
         Assert.assertEquals(Transaction.Status.FAILED, result);
+    }
+    
+    @Test
+    public void testMultipleTransactionsOverdraft() {
+        Assert.assertEquals(Transaction.Status.OK, transactionEntityFacade.credit(id, 100));
+        Assert.assertEquals(Transaction.Status.OK, transactionEntityFacade.debit(id, 50));
+        Assert.assertEquals(Transaction.Status.OK, transactionEntityFacade.debit(id, 50));
+        Assert.assertEquals(Transaction.Status.FAILED, transactionEntityFacade.debit(id, 1));
     }
     
     @Test
@@ -91,14 +97,25 @@ public class TransactionEntityFacadeTest {
     
     @Test
     public void testFindTransactions() throws Exception {
-        Account account = accountEntityFacade.create(Account.Type.CHECK, "1e8a4f8a29989789cbb6726f14934f2f", "7fe7b9a7b3a9168cfbd1a2af2c58aaa6");
-        transactionEntityFacade.credit(account.getId(), 100);
+        transactionEntityFacade.credit(id, 100);
         
-        List<Transaction> transactions = transactionEntityFacade.transactions(account.getId());
+        List<Transaction> transactions = transactionEntityFacade.transactions(id);
         Transaction first = transactions.get(0);
         Assert.assertEquals(100, first.getAmount());
-        Assert.assertEquals(account.getId(), first.getAccount().getId());
+        Assert.assertEquals(id, first.getAccount().getId());
         Assert.assertEquals(Transaction.Type.CREDIT, first.getType());
+    }
+    
+    @Test
+    public void testFindFailedTransactions() throws Exception {
+        transactionEntityFacade.debit(id, 100);
+        
+        List<Transaction> transactions = transactionEntityFacade.transactions(id);
+        Transaction first = transactions.get(0);
+        Assert.assertEquals(100, first.getAmount());
+        Assert.assertEquals(id, first.getAccount().getId());
+        Assert.assertEquals(Transaction.Type.DEBIT, first.getType());
+        Assert.assertEquals(Transaction.Status.FAILED, first.getStatus());
     }
     
     @AfterClass

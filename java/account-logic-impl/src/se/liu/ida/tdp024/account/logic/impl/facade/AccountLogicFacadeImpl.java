@@ -75,7 +75,7 @@ public class AccountLogicFacadeImpl implements AccountLogicFacade {
         }
         final String url = PERSON_ENDPOINT + "/find.name";
         String json = helper.get(url, "name", name);
-        if (json.equals("null")) throw new IllegalArgumentException("Person does not exist");
+        if (json.equals("null")) throw new IllegalArgumentException("Person \"" + name + "\" does not exist");
         AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
         return serializer.fromJson(json, PersonDTO.class);
     }
@@ -87,7 +87,7 @@ public class AccountLogicFacadeImpl implements AccountLogicFacade {
         }
         final String url = BANK_ENDPOINT + "/find.name";
         String json = helper.get(url, "name", name);
-        if (json.equals("null")) throw new IllegalArgumentException("Bank does not exist");
+        if (json.equals("null")) throw new IllegalArgumentException("Bank \"" + name + "\" does not exist");
         AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
         return serializer.fromJson(json, BankDTO.class);
     }

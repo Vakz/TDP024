@@ -32,7 +32,6 @@ public class AccountService {
         try {
             String res = accountLogicFacade.create(accounttype, bank, name);
             log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL ACCOUNT CREATION: accounttype: " + accounttype + ", bank: " + bank + ", person: " + name);
-            System.out.println(res);
             return Response.ok().entity(res).build();
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage());
@@ -81,7 +80,7 @@ public class AccountService {
     @Path("transactions")
     public Response transactions(@QueryParam("id") int id) {
         try {
-            String res = transactionLogicFacade.transaction(id);
+            String res = transactionLogicFacade.transactions(id);
             return Response.ok(res).build();
         } catch (Exception e) {
             log(AccountLoggerLevel.EMERGENCY, "UNKNOWN TRANSACTION ERROR: " + e.getMessage());

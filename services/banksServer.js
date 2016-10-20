@@ -15,7 +15,12 @@ app.get('/find.name', function(req, res) {
   if (name) {
     db.get("SELECT * FROM bank WHERE name=(?) COLLATE NOCASE", {1: name}, function(err, row) {
       if (row) res.send({key: row.id, name: row.name});
-      else res.send('null');
+      else {
+        console.log("LOOKUP FAILED FOR BANK \"" + req.query.name + "\"");
+        if (err) console.log("FAILED WITH ERROR: " + err);
+        res.send('null');
+
+      }
     });
   } else {
     res.send('null');
@@ -26,9 +31,11 @@ app.get("/find.key", function(req, res) {
   var id = req.query.key;
   if (id) {
     db.get("SELECT * FROM bank WHERE id=(?)", {1: id}, function(err, row) {
-      console.log(row);
       if (row) res.send({key: row.id, name: row.name});
-      else res.send('null');
+      else
+      {
+        res.send('null');
+      }
     });
   }
   else {

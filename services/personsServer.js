@@ -15,7 +15,11 @@ app.get('/find.name', function(req, res) {
   if (name) {
     db.get("SELECT * FROM person WHERE name=(?) COLLATE NOCASE", {1: name}, function(err, row) {
       if (row) res.send({key: row.id, name: row.name});
-      else res.send('null');
+      else {
+        console.log("LOOKUP FAILED FOR PERSON \"" + req.query.name + "\"");
+        if (err) console.log("FAILED WITH ERROR: " + err);
+        res.send('null');
+      }
     });
   } else {
     res.send('null');

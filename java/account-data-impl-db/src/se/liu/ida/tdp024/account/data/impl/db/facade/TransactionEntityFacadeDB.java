@@ -5,9 +5,12 @@
  */
 package se.liu.ida.tdp024.account.data.impl.db.facade;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.Query;
 import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.data.api.entity.Transaction;
@@ -46,12 +49,11 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
     @Override
     public Transaction.Status credit(int id, int amount) {
         EntityManager em = EMF.getEntityManager();
-        
+        em.getTransaction().begin();
         Transaction.Status success = Transaction.Status.FAILED;
-        Account account = em.find(AccountDB.class, id);
+        Account account = em.find(AccountDB.class, id, LockModeType.PESSIMISTIC_WRITE);
         try {
             if (amount <= 0) throw new IllegalArgumentException("Transaction amount must be positive");
-            em.getTransaction().begin();
             account.setHoldings(account.getHoldings() + amount);
             em.merge(account);
             em.getTransaction().commit();
@@ -63,18 +65,12 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         } finally {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
-                em.close();
             }
-        }
+        } 
         
         try {
+            Transaction transaction = new TransactionDB(id, Transaction.Type.CREDIT, amount, getDate(), success, account);
             em.getTransaction().begin();
-            Transaction transaction = new TransactionDB();
-            transaction.setAmount(amount);
-            transaction.setCreated(new Date());
-            transaction.setStatus(success);
-            transaction.setType(Transaction.Type.CREDIT);
-            transaction.setAccount(account);
             em.persist(transaction);
             em.getTransaction().commit();
             log(AccountLoggerLevel.INFO, "Inserted new credit transasction for account id " + id);
@@ -96,12 +92,15 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         EntityManager em = EMF.getEntityManager();
         em.getTransaction().begin();
         Transaction.Status success = Transaction.Status.FAILED;
-        Account account = em.find(AccountDB.class, id);
+        Account account = em.find(AccountDB.class, id, LockModeType.PESSIMISTIC_WRITE);
         try {
             if (amount <= 0) throw new IllegalArgumentException("Transaction amount must be positive");
-            if (amount > account.getHoldings()) throw new IllegalArgumentException("Can't debit more than current account holdings");
+            if (amount > account.getHoldings()) {
+                throw new IllegalArgumentException("Can't debit more than current account holdings");
+            }
             account.setHoldings(account.getHoldings() - amount);
             em.merge(account);
+            em.getTransaction().commit();
             success = Transaction.Status.OK;
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.ERROR, e.getMessage() + ", id: " + id + ", amount: " + amount);
@@ -114,13 +113,8 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         }
         
         try {
+            Transaction transaction = new TransactionDB(id, Transaction.Type.DEBIT, amount, getDate(), success, account);
             em.getTransaction().begin();
-            Transaction transaction = new TransactionDB();
-            transaction.setAmount(amount);
-            transaction.setCreated(new Date());
-            transaction.setStatus(success);
-            transaction.setType(Transaction.Type.DEBIT);
-            transaction.setAccount(account);
             em.persist(transaction);
             em.getTransaction().commit();
             log(AccountLoggerLevel.INFO, "Inserted new debit transasction for account id " + id);
@@ -137,5 +131,7 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         return success;
     }
     
-    
+    private String getDate() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(Calendar.getInstance().getTime());
+    }
 }

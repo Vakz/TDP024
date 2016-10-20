@@ -12,6 +12,7 @@ public class AccountCreateTest {
 
     private static final HTTPHelper httpHelper = new HTTPHelperImpl();
 
+
     @Test
     public void createSuccess() {
 
@@ -285,9 +286,6 @@ public class AccountCreateTest {
             String accountType = "SAVINGS";
             String response = httpHelper.get(FinalConstants.ENDPOINT + "account/account/create/", "name", name, "bank", bank, "accounttype", accountType);
             Assert.assertEquals("", response);
-        }
-
-
-
+        }  
     }
 }

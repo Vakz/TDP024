@@ -1,5 +1,6 @@
 package se.liu.ida.tdp024.account.xfinal.test.account;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 import se.liu.ida.tdp024.account.util.http.HTTPHelper;
@@ -13,9 +14,7 @@ public class AccountFindTest {
     
     private static final HTTPHelper httpHelper = new HTTPHelperImpl();
     private static final AccountJsonSerializer jsonSerializer = new AccountJsonSerializerImpl();
-    
-    
-    
+     
     @Test
     public void testFind() {
         
