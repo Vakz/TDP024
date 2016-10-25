@@ -1,11 +1,13 @@
 package se.liu.ida.tdp024.account.logic.test.facade;
 
+import java.util.List;
 import se.liu.ida.tdp024.account.logic.test.util.HTTPHelperMock;
 import se.liu.ida.tdp024.account.logic.test.util.AccountEntityFacadeMock;
 import se.liu.ida.tdp024.account.logic.test.util.AccountLoggerMock;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
+import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.logic.api.facade.AccountLogicFacade;
 import se.liu.ida.tdp024.account.logic.impl.facade.AccountLogicFacadeImpl;
 
@@ -23,21 +25,26 @@ public class AccountLogicFacadeTest {
     public void testFind() {
         String expected = "[{\"id\":1,\"personKey\":\"personkey\",\"accountType\":\"CHECK\",\"bankKey\":\"bankkey\",\"holdings\":2}]";
         
-        String res = accountLogicFacade.find("Emelie");
-        Assert.assertEquals(expected, res);
+        List<Account> accounts = accountLogicFacade.find("Emelie");
+        Account first = accounts.get(0);
+        Assert.assertEquals(1, first.getId()); 
+        Assert.assertEquals("personkey", first.getPersonKey());
+        Assert.assertEquals("bankkey", first.getBankKey());
+        Assert.assertEquals(Account.Type.CHECK, first.getAccountType());
+        Assert.assertEquals(2, first.getHoldings());
     }
     
     @Test
     public void testInvalidWhitespaceFind() {
-        String result = accountLogicFacade.find("      ");
-        Assert.assertEquals("[]", result);
+        List<Account> accounts = accountLogicFacade.find("      ");
+        Assert.assertTrue(accounts.isEmpty());
         
     }
     
     @Test
     public void testInvalidNullFind() {
-        String result = accountLogicFacade.find(null);
-        Assert.assertEquals("[]", result);
+        List<Account> accounts = accountLogicFacade.find(null);
+       Assert.assertTrue(accounts.isEmpty());
     }
     
     @Test
@@ -83,6 +90,6 @@ public class AccountLogicFacadeTest {
 
     @Test(expected=IllegalArgumentException.class)
     public void testInvalidType() throws Exception  {
-        String res = accountLogicFacade.create("NOEXIST", "Emelie", "Swedbank");
+        accountLogicFacade.create("NOEXIST", "Emelie", "Swedbank");
     }
 }

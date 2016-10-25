@@ -5,27 +5,21 @@
  */
 package se.liu.ida.tdp024.account.logic.test.facade;
 
+import java.util.List;
 import se.liu.ida.tdp024.account.logic.test.util.TransactionEntityFacadeMock;
 import se.liu.ida.tdp024.account.logic.test.util.AccountLoggerMock;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.hamcrest.CoreMatchers;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.not;
 import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.data.api.entity.Transaction;
 import se.liu.ida.tdp024.account.data.api.facade.AccountEntityFacade;
 import se.liu.ida.tdp024.account.data.api.util.StorageFacade;
-import se.liu.ida.tdp024.account.data.impl.db.entity.TransactionDB;
 import se.liu.ida.tdp024.account.data.impl.db.facade.AccountEntityFacadeDB;
-import se.liu.ida.tdp024.account.data.impl.db.facade.TransactionEntityFacadeDB;
 import se.liu.ida.tdp024.account.data.impl.db.util.StorageFacadeDB;
 import se.liu.ida.tdp024.account.logic.api.facade.TransactionLogicFacade;
 import se.liu.ida.tdp024.account.logic.impl.facade.TransactionLogicFacadeImpl;
-import se.liu.ida.tdp024.account.util.json.AccountJsonSerializer;
-import se.liu.ida.tdp024.account.util.json.AccountJsonSerializerImpl;
 
 /**
  *
@@ -49,8 +43,8 @@ public class TransactionLogicFacadeTest {
     
     @Test
     public void findNoTransactions() {
-        String transactions = transactionLogicFacade.transactions(-1);
-        Assert.assertEquals("[]", transactions);
+        List<Transaction> transactions = transactionLogicFacade.transactions(-1);
+        Assert.assertTrue(transactions.isEmpty());
     }
     
     @Test
@@ -80,13 +74,15 @@ public class TransactionLogicFacadeTest {
     }
     
     @Test
-    public void findTransaction() throws Exception {
-        AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
-        
+    public void findTransaction() throws Exception {        
         String result = transactionLogicFacade.credit(account.getId(), 5);
         Assert.assertEquals("OK", result);
         
-        result = transactionLogicFacade.transactions(account.getId());
-        Assert.assertThat("[]", not(equalTo(result)));
+        List<Transaction> transactions = transactionLogicFacade.transactions(account.getId());
+        Transaction first = transactions.get(0);
+        Assert.assertEquals(account.getId(), first.getAccount().getId());
+        Assert.assertEquals(5, first.getAmount());
+        Assert.assertEquals(Transaction.Type.CREDIT, first.getType());
+        Assert.assertEquals(Transaction.Status.OK, first.getStatus());
     }
 }

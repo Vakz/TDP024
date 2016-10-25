@@ -1,5 +1,6 @@
 package se.liu.ida.tdp024.account.logic.impl.facade;
 
+import java.util.ArrayList;
 import java.util.List;
 import se.liu.ida.tdp024.account.data.api.entity.Account;
 import se.liu.ida.tdp024.account.data.api.facade.AccountEntityFacade;
@@ -32,18 +33,16 @@ public class AccountLogicFacadeImpl implements AccountLogicFacade {
     }
 
     @Override
-    public String find(String name) {
+    public List<Account> find(String name) {
         PersonDTO person;
         try {
             person = getPerson(name);
         } catch (IllegalArgumentException e) {
             log(AccountLoggerLevel.WARNING, e.getMessage());
-            return "[]";
+            return new ArrayList<Account>();
         }
         
-        AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
-        List<Account> accounts = accountEntityFacade.find(person.getKey());
-        return serializer.toJson(accounts);
+        return accountEntityFacade.find(person.getKey());
     }
 
     @Override

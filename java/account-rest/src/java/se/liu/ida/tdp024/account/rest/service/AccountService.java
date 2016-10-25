@@ -1,9 +1,14 @@
 package se.liu.ida.tdp024.account.rest.service;
 
+import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import se.liu.ida.tdp024.account.data.api.entity.Account;
+import se.liu.ida.tdp024.account.data.api.entity.Transaction;
 import se.liu.ida.tdp024.account.data.impl.db.facade.AccountEntityFacadeDB;
 import se.liu.ida.tdp024.account.data.impl.db.facade.TransactionEntityFacadeDB;
 import se.liu.ida.tdp024.account.logic.api.facade.AccountLogicFacade;
@@ -66,16 +71,20 @@ public class AccountService {
     }
     
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("transactions")
     public Response transactions(@QueryParam("id") int id) {
-        String res = transactionLogicFacade.transactions(id);
-        return Response.ok(res).build();
+        List<Transaction> transactions = transactionLogicFacade.transactions(id);
+        log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL FIND TRANSACTIONS. ID: " + id + ", results: " + transactions.size());
+        return Response.ok().entity(transactions).build();
     }
     
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("find/name")
     public Response findAccounts(@QueryParam("name") String name) {
-        String res = accountLogicFacade.find(name);
-        return Response.ok(res).build();
+        List<Account> accounts = accountLogicFacade.find(name);
+        log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL FIND ACCOUNTS. Name: " + name + ", results: " + accounts.size());
+        return Response.ok().entity(accounts).build();
     }
 }

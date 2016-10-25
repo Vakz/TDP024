@@ -53,6 +53,9 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         Transaction.Status success = Transaction.Status.FAILED;
         Account account = em.find(AccountDB.class, id, LockModeType.PESSIMISTIC_WRITE);
         try {
+            if (account == null) {
+                throw new IllegalArgumentException("No account with specified id");
+            }
             if (amount <= 0) {
                 throw new IllegalArgumentException("Transaction amount must be positive");
             }
@@ -92,6 +95,9 @@ public class TransactionEntityFacadeDB implements TransactionEntityFacade {
         Transaction.Status success = Transaction.Status.FAILED;
         Account account = em.find(AccountDB.class, id, LockModeType.PESSIMISTIC_WRITE);
         try {
+            if (account == null) {
+                throw new IllegalArgumentException("No account with specified id");
+            }
             if (amount <= 0) {
                 throw new IllegalArgumentException("Transaction amount must be positive");
             }
