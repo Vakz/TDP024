@@ -16,6 +16,8 @@ import se.liu.ida.tdp024.account.logic.api.facade.TransactionLogicFacade;
 import se.liu.ida.tdp024.account.logic.impl.facade.AccountLogicFacadeImpl;
 import se.liu.ida.tdp024.account.logic.impl.facade.TransactionLogicFacadeImpl;
 import se.liu.ida.tdp024.account.util.http.HTTPHelperImpl;
+import se.liu.ida.tdp024.account.util.json.AccountJsonSerializer;
+import se.liu.ida.tdp024.account.util.json.AccountJsonSerializerImpl;
 import se.liu.ida.tdp024.account.util.logger.AccountLogger;
 import se.liu.ida.tdp024.account.util.logger.AccountLogger.AccountLoggerLevel;
 import se.liu.ida.tdp024.account.util.logger.AccountLoggerImpl;
@@ -76,7 +78,8 @@ public class AccountService {
     public Response transactions(@QueryParam("id") int id) {
         List<Transaction> transactions = transactionLogicFacade.transactions(id);
         log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL FIND TRANSACTIONS. ID: " + id + ", results: " + transactions.size());
-        return Response.ok().entity(transactions).build();
+        AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
+        return Response.ok().entity(serializer.toJson(transactions)).build();
     }
     
     @GET
@@ -85,6 +88,7 @@ public class AccountService {
     public Response findAccounts(@QueryParam("name") String name) {
         List<Account> accounts = accountLogicFacade.find(name);
         log(AccountLogger.AccountLoggerLevel.INFO, "SUCCESSFUL FIND ACCOUNTS. Name: " + name + ", results: " + accounts.size());
-        return Response.ok().entity(accounts).build();
+        AccountJsonSerializer serializer = new AccountJsonSerializerImpl();
+        return Response.ok().entity(serializer.toJson(accounts)).build();
     }
 }
